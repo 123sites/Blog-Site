@@ -1,3 +1,10 @@
+
+
+
+// EDIT THIS CODE!!!//////////////////////////////////////////////////////////////
+
+
+
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
