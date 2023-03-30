@@ -3,21 +3,21 @@
 
 ## Description ✏️
 
-This
+This is a CMS-style blog site that publishes articles, posts, the user's thoughts and opinions.
+
 
 ## Installation 🔑
 
-1.  Download or clone the repository,
-2.  ```Node.js``` is required to run this application,
-3.  ```npm``` will need to be installed as well.
-4.  Can be used with npm start to start it with Insomnia.
+1.  ```Node.js``` is required to run this application,
+2.  ```npm``` will need to be installed as well.
+3.  Can be used with npm start to start it with Heroku.
 
 You can find the link to the repository at:
 [Repository link](https://github.com/123sites/Blog-Site.git)
 
 ## Usage
 
-This can be used by an e-commerce busingess.
+This can be used to put the user's thoughts, opinions and other things that they want to post into a blog.
 
 
 ## Video Demonstration 🎯
@@ -46,4 +46,4 @@ So far, I have the `Pull Shark` and `Yolo` badges on GitHub.  Click to view them
 - Express
 - Sequelize
 - JavaScript
-- Can be used with Insomnia
+- Can be used with Heroku
