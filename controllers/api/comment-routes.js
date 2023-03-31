@@ -1,7 +1,10 @@
 const router = require('express').Router();
 const { Project } = require('../../models');
-const signedIn = require('../../utils/logged-in'
+const signedIn = require('../../utils/auth'
 );
+
+
+// FINISH UPDATING THE BELOW////////////////////////////////////////////////
 
 router.post('/', async (req, res) => {
   try {
