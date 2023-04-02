@@ -20,14 +20,18 @@ User.hasMany(Post, {
 // When delete, post by that user is gone.
 Post.belongsTo(User, {
   foreignKey: 'user_id',
-  onDelete: 'SET NULL',
+  // See 28 STU PROJECT: Models & index.js.
+  // onDelete: 'CASCADE',
+  // onDelete: 'SET NULL',
 });
 
 // Comment to it belongs to the User.
 // When delete, comment by that user is gone.
 Comment.belongsTo(User, {
   foreignKey: 'user_id',
-  onDelete: 'SET NULL',
+  // See 28 STU PROJECT: Models & index.js.
+  // onDelete: 'CASCADE',
+  // onDelete: 'SET NULL',
 });
 
 
@@ -35,14 +39,18 @@ Comment.belongsTo(User, {
 // When delete, post by that user is gone.
 Comment.belongsTo(Post, {
   foreignKey: 'post_id',
-  onDelete: 'SET NULL',
+  // See 28 STU PROJECT: Models & index.js.
+  // onDelete: 'CASCADE',
+  // onDelete: 'SET NULL',
 });
 
 // The User can have many comments.
 // When delete, comment by that user is gone.
 User.hasMany(Comment, {
   foreignKey: 'user_id',
-  onDelete: 'SET NULL',
+  // See 28 STU PROJECT: Models & index.js.
+  // onDelete: 'CASCADE',
+  // onDelete: 'SET NULL',
 });
 
 // They can post many comments on to the post.
