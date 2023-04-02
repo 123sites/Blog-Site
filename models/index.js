@@ -17,12 +17,14 @@ User.hasMany(Post, {
 });
 
 // Post belongs to the User.
+// When delete, post by that user is gone.
 Post.belongsTo(User, {
   foreignKey: 'user_id',
   onDelete: 'SET NULL',
 });
 
 // Comment to it belongs to the User.
+// When delete, comment by that user is gone.
 Comment.belongsTo(User, {
   foreignKey: 'user_id',
   onDelete: 'SET NULL',
@@ -30,12 +32,14 @@ Comment.belongsTo(User, {
 
 
 // Comment belongs (is attached) to the post.
+// When delete, post by that user is gone.
 Comment.belongsTo(Post, {
   foreignKey: 'post_id',
   onDelete: 'SET NULL',
 });
 
 // The User can have many comments.
+// When delete, comment by that user is gone.
 User.hasMany(Comment, {
   foreignKey: 'user_id',
   onDelete: 'SET NULL',
