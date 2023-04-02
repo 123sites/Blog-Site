@@ -1,60 +1,60 @@
-async function signupFormH(event) {
+// EDIT THE BELOW CODE ??????????????????????????????????????????????????????/????????????????
+
+const loginFormHandler = async (event) => {
   event.preventDefault();
 
   // The trim() method removes whitespace from both ends of a string and returns a new string,
   // without modifying the original string. To return a new string with whitespace trimmed
   // from just one end, use trimStart() or trimEnd().
-  const username = document.querySelector("#username-signup").value.trim();
-  const password = document.querySelector("#pw-signup").value.trim();
+  
+  // Collect values from the login form
+  const email = document.querySelector('#email-login').value.trim();
+  const password = document.querySelector('#password-login').value.trim();
 
-  if (username && password) {
-    const response = await fetch("/api", {
-      method: "post",
-      body: JSON.stringify({
-        username,
-        password,
-      }),
-      headers: { "Content-Type": "application/json" },
+  if (email && password) {
+    // Send a POST request to the API endpoint
+    const response = await fetch('/api/users/login', {
+      method: 'POST',
+      body: JSON.stringify({ email, password }),
+      headers: { 'Content-Type': 'application/json' },
     });
-    // Checks response status
+
     if (response.ok) {
-      console.log("success");
-      alert("New user was successfully created. Ready to log in");
-      document.location.reload();
+      // If successful, redirect the browser to the profile page
+      document.location.replace('/profile');
     } else {
       alert(response.statusText);
     }
   }
-}
+};
 
-async function loginFormH(event) {
+const signupFormHandler = async (event) => {
   event.preventDefault();
 
-  const username = document.querySelector("#username-login").value.trim();
-  const password = document.querySelector("#pw-login").value.trim();
+  const name = document.querySelector('#name-signup').value.trim();
+  const email = document.querySelector('#email-signup').value.trim();
+  const password = document.querySelector('#password-signup').value.trim();
 
-  if (username && password) {
-    const response = await fetch("/api/login", {
-      method: "post",
-      body: JSON.stringify({
-        username,
-        password,
-      }),
-      headers: { "Content-Type": "application/json" },
+  if (name && email && password) {
+    const response = await fetch('/api/users', {
+      method: 'POST',
+      body: JSON.stringify({ name, email, password }),
+      headers: { 'Content-Type': 'application/json' },
     });
 
     if (response.ok) {
-
-
-      // NEED TO CREATE THE DASHBOARD
-      
-
-      document.location.replace("/dashboard");
+      document.location.replace('/profile');
     } else {
       alert(response.statusText);
     }
   }
-}
+};
 
-document.querySelector(".signup-form").addEventListener("submit", signupFormH);
-document.querySelector(".login-form").addEventListener("submit", loginFormH);
+document
+  .querySelector('.login-form')
+  .addEventListener('submit', loginFormHandler);
+
+document
+  .querySelector('.signup-form')
+  .addEventListener('submit', signupFormHandler);
+

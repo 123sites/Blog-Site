@@ -1,42 +1,116 @@
+// Use top or bottom???????????????????????????????????????????
+
 const router = require('express').Router();
-const { Project } = require('../../models');
-const signedIn = require('../../utils/auth'
-);
 
+const { Comment } = require('../../models');
 
-// FINISH UPDATING THE BELOW////////////////////////////////////////////////
-
-router.post('/', async (req, res) => {
-  try {
-    const newProject = await Project.create({
-      ...req.body,
-      user_id: req.session.user_id,
+// Upload a new comment.
+router.post('/:id', (req, res) => {
+  // Check the session to make sure user is logged in.
+  Comment.create({
+    comment_text: req.body.comment_text,
+    post_id: req.body.post_id,
+    // Use the id from the session.
+    user_id: req.session.user_id,
+  })
+    .then((dbCommentData) => res.json(dbCommentData))
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json(err);
     });
-
-    res.status(200).json(newProject);
-  } catch (err) {
-    res.status(400).json(err);
-  }
 });
 
-router.delete('/:id', async (req, res) => {
-  try {
-    const projectData = await Project.destroy({
+// Delete a comment.
+router.delete('/:id', (req, res) => {
+  Comment.destroy({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((dbUserData) => {
+      if (!dbUserData) {
+        res.status(404).json({ message: 'No Comment found with this id' });
+        return;
+      }
+      res.json(dbUserData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+// Edit a comment.
+router.put('/:id', (req, res) => {
+  Comment.update(
+    {
+      comment_text: req.body.comment_text,
+    },
+    {
       where: {
         id: req.params.id,
-        user_id: req.session.user_id,
       },
-    });
-
-    if (!projectData) {
-      res.status(404).json({ message: 'No project found with this id!' });
-      return;
     }
-
-    res.status(200).json(projectData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
+  )
+    .then((dbPostData) => {
+      if (!dbPostData) {
+        res.status(404).json({ message: 'No comment found with this id' });
+        return;
+      }
+      res.json(dbPostData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 module.exports = router;
+
+
+// router.get('/', (req, res) => {
+//   Comment.findAll()
+//   .then(dbCommentData => res.json(dbCommentData))
+//   .catch(err => {
+//     console.log(err);
+//     res.status(500).json(err);
+//   });
+// });
+
+// router.post('/', withAuth, (req, res) => {
+//   // Checks the session.
+//   if (req.session) {
+//     Comment.create({
+//       comment_text: req.body.comment_text,
+//       post_id: req.body.post_id,
+//       // Uses the id from the session.
+//       user_id: req.session.user_id,
+//     })
+//       .then(dbCommentData => res.json(dbCommentData))
+//       .catch(err => {
+//         console.log(err);
+//         res.status(400).json(err);
+//       });
+//   }
+// });
+
+// router.delete('/:id', (req, res) => {
+//   Comment.destroy({
+//     where: {
+//       id: req.params.id
+//     }
+//   })
+//     .then(dbCommentData => {
+//       if (!dbCommentData) {
+//         res.status(404).json({ message: 'No comment found with this id' });
+//         return;
+//       }
+//       res.json(dbCommentData);
+//     })
+//     .catch(err => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// });
+
+// module.exports = router;
