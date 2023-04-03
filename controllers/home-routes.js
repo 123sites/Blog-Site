@@ -31,7 +31,7 @@ router.get('/', (req, res) => {
       },
       {
         model: User,
-        attributes: ['username', 'github'],
+        attributes: ['username'],
       },
     ],
   })
@@ -119,6 +119,11 @@ router.get('/post/:id', (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
+});
+
+// Shows the login page (template)
+router.get('/login', (req, res) => {
+  res.render('login');
 });
 
 module.exports = router;
