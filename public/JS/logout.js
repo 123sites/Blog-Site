@@ -7,6 +7,7 @@ async function logout() {
     method: 'post',
     headers: { 'Content-Type': 'application/json' }
   });
+console.log(response);
 
   if (response.ok) {
     document.location.replace('/');
@@ -14,5 +15,6 @@ async function logout() {
     alert(response.statusText);
   }
 }
+console.log("logout.js");
 
 document.querySelector('#logout').addEventListener('click', logout);

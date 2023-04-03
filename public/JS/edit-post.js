@@ -12,33 +12,33 @@
 // When idle on the site for more than a set time, I'm able to view comments but I am prompted to log in again 
 // before I can add, update, or delete comments.
 
-async function commentFormHandler(event) {
+async function editFormHandler(event) {
   event.preventDefault();
 
-  const comment_text = document.querySelector('textarea[name="comment-body"]').value.trim();
+  const title = document.querySelector('input[name="post-title"]').value;
+  const post_content = document.querySelector('input[name="post-content"]').value;
+  const id = window.location.toString().split('/')[
+      window.location.toString().split('/').length - 1
+    ];
 
-  const post_id = window.location.toString().split('/')[
-    window.location.toString().split('/').length - 1
-  ];
-
-  if (comment_text) {
-      const response = await fetch('/api/comments', {
-        method: 'POST',
-        body: JSON.stringify({
-          post_id,
-          comment_text
-        }),
-        headers: {
+  const response = await fetch(`/api/posts/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify({
+          title,
+          post_content
+      }),
+      headers: {
           'Content-Type': 'application/json'
-        }
-      });
-    
-      if (response.ok) {
-        document.location.reload();
-      } else {
-        alert(response.statusText);
       }
+    });
+    console.log(response);
+
+    if (response.ok) {
+      document.location.replace('/dashboard/');
+    } else {
+      alert(response.statusText);
     }
 }
+console.log(editFormHandler);
 
-document.querySelector('.comment-form').addEventListener('submit', commentFormHandler);
+document.querySelector('.edit-post-form').addEventListener('submit', editFormHandler);

@@ -1,59 +1,78 @@
-{{!-- TO DO: existing blog posts if any have been posted; navigation links for the homepage & dashboard; 
+{{!-- TO DO: existing blog posts if any have been posted; navigation links for the homepage & dashboard;
 & the option to log in --}}
 
 {{!-- When click onto the homepage, it goes there. --}}
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Ultimate Tech Blog</title>
-      <!-- Nunito Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600;700&display=swap" rel="stylesheet">
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+
+  {{!-- favicon --}}
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+   
+  <!-- Nunito Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
   <link rel="stylesheet" href="/Blog-Site/public/css/style.css">
 </head>
 
 <body>
-    <div class="wrapper">
-    <header>
-  <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
-      <h1 class="">
-        <span role="img" aria-label="money">💸</span>
-        <a href="/">The Ultimate Tech Blog!</a>
-      </h1>
-      <nav>
-        <!-- Conditionally render login or logout links -->
-        {{!-- Nav = Sign-up/Sign-in --}}
-        {{#if logged_in}}
-        <a href="/profile">profile</a> |
-        <button class="no-button" id="logout">logout</button>
-        {{else}}
-        <a href="/login">login</a>
-        {{/if}}
-      </nav>
-    </header>
-    <main class="container container-fluid mt-5">
-      <!-- Render the sub layout -->
-      {{{ body }}}
-    </main>
-    <footer>
-      
-    </footer>
-  </div>
+  <div class="wrapper">
+    <header class="nav-header nav-text">
+      <div class="flex-column justify-space-around">
+        <header class="display-flex justify-space-between align-center p-2">
+          <div class="display-flex align-center">
+            <h1 class="">
+              <a href="/">The Ultimate Tech Blog!</a>
+            </h1>
 
-  <!-- Render script for logged in users only -->
-  {{#if logged_in}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
+            {{! If the username is available, display it }}
+            {{#if username}}
+            <p id='loggedin'><span>Logged in as</span>
+              <em style='font-weight: 800'>{{username}}</em>
+            </p>
+            {{/if}}
+          </div>
+          <nav>
+
+            <!-- Conditionally render login or logout links -->
+            {{!-- Nav = Sign-up/Sign-in --}}
+            {{#if logged_in}}
+            <a href="/">Home</a>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/api/users/logout">Logout</a>
+            <button class="no-button" id="logout">Logout</button>
+            {{else}}
+            <a href="/">Home</a>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/login">login</a>
+            {{/if}}
+          </nav>
+        </header>
+        <main class="container container-fluid mt-5">
+
+          <!-- Render the layout -->
+          {{{ body }}}
+        </main>
+        <footer>
+
+        </footer>
+      </div>
+
+      <!-- Render script for logged in users only. -->
+      {{#if logged_in}}
+      <script src="/js/logout.js"></script>
+      {{/if}}
 </body>
 
 </html>
-

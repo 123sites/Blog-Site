@@ -27,14 +27,14 @@ async function signupFormHandler(event) {
       body: JSON.stringify({
         username,
         email,
-        twitter,
         github,
         password
       }),
       headers: { 'Content-Type': 'application/json' }
     });
+    console.log(response);
 
-    // check the response status
+    // Check the response status.
     if (response.ok) {
       console.log('success');
       document.location.replace('/dashboard');
@@ -43,5 +43,6 @@ async function signupFormHandler(event) {
     }
   }
 }
+console.log(signupFormHandler);
 
 document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);

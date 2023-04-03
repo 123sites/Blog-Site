@@ -12,3 +12,4 @@ module.exports = {
     return word;
   }  
 };
+console.log("after helpers.js")

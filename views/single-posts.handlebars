@@ -1,0 +1,59 @@
+<div class='page-singlepost'>
+  <div class='single-post'>
+    <div class='post-header'>
+      <p class='post-title'>{{post.title}}</p>
+      <p class='post-date'>{{format_date post.date}}</p>
+    </div>
+    <p class='post-body'>{{post.description}}</p>
+    <p class='post-user'>- {{post.user}}</p>
+  </div>
+  <form class='comment-form'>
+    {{#if loggedIn}}
+      <textarea class='comment-field' placeholder='Add comment'></textarea>
+      <h1 class='comment-status'>The character count must be more than 4</h1>
+      <button type='submit'>Submit</button>
+    {{else}}
+      <textarea
+        class='comment-field'
+        disabled='true'
+        placeholder='In order to comment on a post, you have to be logged-in.'
+      ></textarea>
+    {{/if}}
+  </form>
+  <hr class='comment-section-divider' />
+  <div class='comment-section'>
+    {{#if post.comments}}
+      {{#each post.comments as |comment|}}
+      {{!-- If users-comment is true, = to the current signed-in user's username. --}}
+        {{! #each post.comments == an object with an array ('comments')
+    
+        {{#if comment.users-comment}}
+        <div id="single-comment" class="users-comment">
+        {{!-- Add the comment id to the edit/delete button so we can extract the value in the click event listener  --}}
+        <div id="comment-control">
+          <p id="new-comment-status">Comment must be greater than 4 characters.</p>
+          <button data-comment-id="{{comment.commentId}}" id="confirm-comment-{{comment.commentId}}" class='confirm-comment'>Confirm</button>
+          <button data-comment-id="{{comment.commentId}}" id="edit-comment-{{comment.commentId}}" class='edit-comment'>Edit</button>
+          <button data-comment-id="{{comment.commentId}}" id="delete-comment-{{comment.commentId}}" class='delete-comment'>Delete</button>
+        </div>
+        {{else}}
+        <div class='single-comment'>
+  
+          {{/if}}
+          <div class='comment-wrapper'>
+            <p class='user'>{{comment.user}}</p>
+            <p class='comment'>{{comment.text}}</p>
+          </div>
+          {{! format_date is a helper function we created in utils/helpers }}
+          <p class='comment-date'>{{format_date comment.date}}</p>
+        </div>
+      {{/each}}
+    {{else}}
+      <p>No comments posted</p>
+    {{/if}}
+  </div>
+</div>
+<script src='/js/add-comment.js'></script>
+<script src='/js/edit-comment.js'></script>
+<script src='/js/delete-comment.js'></script>
+

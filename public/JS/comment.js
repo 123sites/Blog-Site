@@ -32,13 +32,15 @@ async function commentFormHandler(event) {
           'Content-Type': 'application/json'
         }
       });
-    
+    console.log(response);
+
       if (response.ok) {
         document.location.reload();
       } else {
         alert(response.statusText);
       }
     }
+    console.log(commentFormHandler);
 }
 
 document.querySelector('.comment-form').addEventListener('submit', commentFormHandler);
