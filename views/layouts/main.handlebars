@@ -1,3 +1,8 @@
+{{!-- TO DO: existing blog posts if any have been posted; navigation links for the homepage & dashboard; 
+& the option to log in --}}
+
+{{!-- When click onto the homepage, it goes there. --}}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,6 +31,7 @@
       </h1>
       <nav>
         <!-- Conditionally render login or logout links -->
+        {{!-- Nav = Sign-up/Sign-in --}}
         {{#if logged_in}}
         <a href="/profile">profile</a> |
         <button class="no-button" id="logout">logout</button>

@@ -1,3 +1,4 @@
+
 // Enter a comment and click on the submit button while signed in.
 // Comment is saved and the post is updated to display the comment, the comment creator’s username, and the date created
 
@@ -12,19 +13,35 @@
 // When idle on the site for more than a set time, I'm able to view comments but I am prompted to log in again 
 // before I can add, update, or delete comments.
 
-const router = require('express').Router();
+async function signupFormHandler(event) {
+  event.preventDefault();
 
-const apiRoutes = require('./api');
-const homeRoutes = require('./home-routes');
-const loginRoutes = require('./login-routes');
-const dashboardRoutes = require('./dashboard-routes');
+  const username = document.querySelector('#username-signup').value.trim();
+  const email = document.querySelector('#email-signup').value.trim();
+  const password = document.querySelector('#password-signup').value.trim();
+  const github = document.querySelector('#github-signup').value.trim();
 
+  if (username && email && password) {
+    const response = await fetch('/api/users', {
+      method: 'post',
+      body: JSON.stringify({
+        username,
+        email,
+        twitter,
+        github,
+        password
+      }),
+      headers: { 'Content-Type': 'application/json' }
+    });
 
-router.use('/', homeRoutes);
-router.use('/login', loginRoutes);
-router.use('/dashboard', dashboardRoutes);
-router.use('/api', apiRoutes);
+    // check the response status
+    if (response.ok) {
+      console.log('success');
+      document.location.replace('/dashboard');
+    } else {
+      alert(response.statusText);
+    }
+  }
+}
 
-module.exports = router;
-
-
+document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);

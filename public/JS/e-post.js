@@ -12,19 +12,31 @@
 // When idle on the site for more than a set time, I'm able to view comments but I am prompted to log in again 
 // before I can add, update, or delete comments.
 
-const router = require('express').Router();
+async function editFormHandler(event) {
+  event.preventDefault();
 
-const apiRoutes = require('./api');
-const homeRoutes = require('./home-routes');
-const loginRoutes = require('./login-routes');
-const dashboardRoutes = require('./dashboard-routes');
+  const title = document.querySelector('input[name="post-title"]').value;
+  const post_content = document.querySelector('input[name="post-content"]').value;
+  const id = window.location.toString().split('/')[
+      window.location.toString().split('/').length - 1
+    ];
 
+  const response = await fetch(`/api/posts/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify({
+          title,
+          post_content
+      }),
+      headers: {
+          'Content-Type': 'application/json'
+      }
+    });
+    
+    if (response.ok) {
+      document.location.replace('/dashboard/');
+    } else {
+      alert(response.statusText);
+    }
+}
 
-router.use('/', homeRoutes);
-router.use('/login', loginRoutes);
-router.use('/dashboard', dashboardRoutes);
-router.use('/api', apiRoutes);
-
-module.exports = router;
-
-
+document.querySelector('.edit-post-form').addEventListener('submit', editFormHandler);
