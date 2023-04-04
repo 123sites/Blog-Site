@@ -12,16 +12,16 @@
       placeholder='Post description  *required'
     ></textarea>
 
-    <h1 id='addpost-status'>Fill in all required inputs with character count
-      above 4</h1>
+    <h1 id='addpost-status'>Fill in all required inputs with the character count
+      more than 4</h1>
     <button id='add-post' type='submit'>Post</button>
   </form>
 </div>
 <hr id='dashboardHr' />
-<h1 id='your-posts'>Your posts</h1>
+<h1 id='your-posts'>What you have posted.</h1>
 <div id='dashboard-posts'>
   {{#if posts}}{{else}}
-    <p id='no-posts'>You have not uploaded any posts</p>
+    <p id='no-posts'>You have not uploaded any posts.</p>
   {{/if}}
 
   {{#each posts as |post|}}
@@ -54,8 +54,8 @@
           class='confirm-post'
           id='confirm-post-{{post.postId}}'
         >Confirm</button>
-        <p id='edit-post-status'>Make sure the new post title and body are
-          greater than 4 characters</p>
+        <p id='edit-post-status'>Make sure your new post title and body are
+          more than 4 characters</p>
       </div>
     </div>
   {{/each}}

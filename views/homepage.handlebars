@@ -4,14 +4,15 @@
   <div class="col-md-5">
     <h2>
       <!-- Call helper function with triple brackets to render the emoji span as HTML -->
-      {{{get_emoji}}}
-      <a href="/single-post/{{post.id}}">{{post.name}}</a>
+      {{{ get_emoji }}}
+      {{!-- Shows a single post with the name. --}}
+      <a href="/single-post/{{post.id}}">{{ post.name }}</a>
     </h2>
-    <p>Created by {{post.user.name}} on {{format_date post.date_created}}</p>
-  </div>
+    <p> Title: {{ post.title }} on {{ format_date post.date_created }}</p>
+  </div> 
   <div class="col-md-7">
     <p>
-      {{post.description}}
+      {{ post.description }}
     </p>
   </div>
 </div>

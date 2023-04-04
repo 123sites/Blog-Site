@@ -25,7 +25,9 @@ async function deleteComment(event) {
   const response = await fetch(`/api/comment/${id}`, {
     method: "DELETE",
     body: JSON.stringify({
-      post_id: id,
+      comment,
+      username,
+      date_created,
     }),
     headers: {
       "Content-Type": "application/json",

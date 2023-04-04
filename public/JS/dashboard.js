@@ -27,7 +27,8 @@ newBlog.addEventListener("submit", event => {
     }
     const blogObj = {
         title: title,
-        content: content,
+        content: description,
+        date_created: date_created
     }
     fetch("/api/blogs",{
         method:"POST",

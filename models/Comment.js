@@ -3,16 +3,22 @@ const sequelize = require(".././config/connection");
 
 class Comment extends Model {}
 
-Comment.init({
-    body: {
-        type:DataTypes.TEXT,
-        allowNull:false
+Comment.init(
+  {
+    comment: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-    date: {
-        type:DataTypes.DATE,
-        defaultValue: DataTypes.NOW,
-    }
-},{
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    date_created: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
+    },
+  },
+  {
     // Pass in the imported sequelize connection.
     sequelize,
     // Don't automatically create timestamp fields
@@ -22,7 +28,7 @@ Comment.init({
     // Use underscores instead of camel-casing.
     underscored: true,
     // Make it so our model name stays in lowercase in the database.
-    modelName: 'comment',
+    modelName: "comment",
   }
 );
 

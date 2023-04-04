@@ -35,7 +35,6 @@
             <h1 class="">
               <a href="/">The Ultimate Tech Blog!</a>
             </h1>
-
             {{! If the username is available, display it }}
             {{#if username}}
             <p id='loggedin'><span>Logged in as</span>
@@ -44,7 +43,6 @@
             {{/if}}
           </div>
           <nav>
-
             <!-- Conditionally render login or logout links -->
             {{!-- Nav = Sign-up/Sign-in --}}
             {{#if logged_in}}
@@ -60,7 +58,6 @@
           </nav>
         </header>
         <main class="container container-fluid mt-5">
-
           <!-- Render the layout -->
           {{{ body }}}
         </main>
@@ -68,7 +65,6 @@
 
         </footer>
       </div>
-
       <!-- Render script for logged in users only. -->
       {{#if logged_in}}
       <script src="/js/logout.js"></script>
