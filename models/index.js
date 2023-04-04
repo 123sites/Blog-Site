@@ -11,6 +11,36 @@ const Comment = require('./Comment')
 
 // Sequelize Associations: https://sequelize.org/docs/v6/core-concepts/assocs/
 
+User.hasMany(Post, {
+  foreignKey: 'user_id',
+});
+
+Post.belongsTo(User, {
+  foreignKey: 'user_id',
+  onDelete: 'SET NULL',
+});
+
+Comment.belongsTo(User, {
+  foreignKey: 'user_id',
+  onDelete: 'SET NULL',
+});
+
+Comment.belongsTo(Post, {
+  foreignKey: 'post_id',
+  onDelete: 'SET NULL',
+});
+
+User.hasMany(Comment, {
+  foreignKey: 'user_id',
+  onDelete: 'SET NULL',
+});
+
+Post.hasMany(Comment, {
+  foreignKey: 'post_id',
+});
+
+
+
 // A user can have lots of posts.
 User.hasMany(Post, {
   foreignKey: 'user_id'

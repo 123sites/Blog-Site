@@ -7,32 +7,13 @@ class Post extends Model {}
 // Creates the fields for Post Model.
 Post.init(
   {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true,
-    },
     title: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [4],
-       },
-  },
-    post_text: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [4],
     },
-  },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "user",
-        key: "id",
-      },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false,
     },
   },
   {
