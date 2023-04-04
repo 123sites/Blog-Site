@@ -5,9 +5,10 @@ class Comment extends Model {}
 
 Comment.init(
   {
-    comment: {
+    content: {
       type: DataTypes.STRING,
       allowNull: false,
+      len: [1],
     },
     username: {
       type: DataTypes.STRING,

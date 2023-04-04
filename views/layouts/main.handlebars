@@ -37,7 +37,7 @@
             </h1>
             {{! If the username is available, display it }}
             {{#if username}}
-            <p id='loggedin'><span>Logged in as</span>
+            <p id='loggedin'><span>Logged in as:</span>
               <em style='font-weight: 800'>{{username}}</em>
             </p>
             {{/if}}
@@ -48,7 +48,7 @@
             {{#if logged_in}}
             <a href="/">Home</a>
             <a href="/dashboard">Dashboard</a>
-            <a href="/api/users/logout">Logout</a>
+            <a href="/api/userRoutes">Logout</a>
             <button class="no-button" id="logout">Logout</button>
             {{else}}
             <a href="/">Home</a>
