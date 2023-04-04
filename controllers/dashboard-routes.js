@@ -24,19 +24,19 @@ router.get("/", withAuth, (req, res) => {
     where: {
       user_id: req.session.user_id,
     },
-    attributes: ["id", "title", "created_at", "user_id", "description"],
+    attributes: ['id', 'username', 'email', 'password'],
     include: [
       {
         model: Comment,
-        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        attributes: ['comment_text', 'post_id', 'user_id', 'created_at'],
         include: {
           model: User,
-          attributes: ["username", "github"],
+          attributes: ["username"],
         },
       },
       {
         model: User,
-        attributes: ["username", "github"],
+        attributes: ["username"],
       },
     ],
   })
@@ -44,6 +44,7 @@ router.get("/", withAuth, (req, res) => {
     .then((dbPostData) => {
       // Declares an empty object to hold all the needed data.
       const posts = [];
+      console.log(dbPostData);
 
       // Check how many posts a user has so can run a loop or just return the single data.
       if (dbPostData.length == 1) {
@@ -73,6 +74,7 @@ router.get("/", withAuth, (req, res) => {
       res.status(500).json(err);
     });
 });
+console.log('end of req.session.user_id');
 
 module.exports = router;
 
