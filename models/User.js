@@ -51,6 +51,7 @@ User.init(
   }
 );
 console.log(User.init);
+
 module.exports = User;
 
 // Creates fields for the User Model.
