@@ -12,39 +12,70 @@
 // When idle on the site for more than a set time, I'm able to view comments but I am prompted to log in again
 // before I can add, update, or delete comments.
 
-// TOP OR BOTTOM CODE ??????????????????????????????????????????????????????????????
 
-async function deleteComment(event) {
-  event.preventDefault();
+// async function deleteComment(comment_id) {
+//   const postId = window.location.pathname.split('/')[2];
+//   const response = await fetch(`/api/comments/${comment_id}`, {
+//     method: 'DELETE',
+//   });
 
-  const id = window.location.toString().split("/")[
-    window.location.toString().split("/").length - 1
-  ];
-  console.log(id);
+//   if (response.ok) {
+//     document.location.replace(`/post/${postId}`);
+//   } else {
+//     alert(response.statusText);
+//   }
+// }
 
-  const response = await fetch(`/api/comment/${id}`, {
-    method: "DELETE",
-    body: JSON.stringify({
-      comment,
-      username,
-      date_created,
-    }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  console.log(response);
+// const deleteBtn = document.querySelectorAll('.delete-comment');
+// deleteBtn.forEach((btn) => {
+//   btn.addEventListener('click', () => {
+//     let commentId = btn.dataset.commentId;
+//     deleteComment(commentId);
+//   });
+// });
 
-  if (response.ok) {
-    document.location.replace("/dashboard/");
-  } else {
-    alert(response.statusText);
-  }
-}
 
-document
-  .querySelector(".delete-comment-btn")
-  .addEventListener("click", deleteComment);
+
+
+
+
+
+
+
+
+
+
+// async function deleteComment(event) {
+//   event.preventDefault();
+
+//   const id = window.location.toString().split("/")[
+//     window.location.toString().split("/").length - 1
+//   ];
+//   console.log(id);
+
+//   const response = await fetch(`/api/comment/${id}`, {
+//     method: "DELETE",
+//     body: JSON.stringify({
+//       comment,
+//       username,
+//       date_created,
+//     }),
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   });
+//   console.log(response);
+
+//   if (response.ok) {
+//     document.location.replace("/dashboard/");
+//   } else {
+//     alert(response.statusText);
+//   }
+// }
+
+// document
+//   .querySelector(".delete-comment-btn")
+//   .addEventListener("click", deleteComment);
 
 // async function deleteComment(comment_id) {
 //   const postId = window.location.pathname.split('/')[2];

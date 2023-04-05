@@ -12,26 +12,88 @@
 // When idle on the site for more than a set time, I'm able to view comments but I am prompted to log in again
 // before I can add, update, or delete comments.
 
-
-async function deleteFormHandler(event) {
+// to delete it from the database
+const deleteFormHandler = async (event) => {
+  // The preventDefault() method of the Event interface
+  // tells the user agent that if the event does not get explicitly handled,
+  // its default action should not be taken as it normally would be.
   event.preventDefault();
-
-  const id = window.location.toString().split('/')[
-    window.location.toString().split('/').length-1
-  ];
-
+  // this hack grabs the post ID number from the end of the URL
+  const id = window.location.toString().split('/')[window.location.toString().split('/').length - 1];
+  // do a fetch with the post ID to the Posts API
   const response = await fetch(`/api/posts/${id}`, {
-    method: 'DELETE',    
-  });    
-
+      method: 'DELETE',
+      body: JSON.stringify({
+          post_id: id
+      }),
+      headers: {
+          'Content-Type': 'application/json'
+      }
+  });
+  // if the operation is successful, navigate back to the 'Dashboard' page
   if (response.ok) {
-    document.location.replace('/dashboard/');
+      document.location.replace('/api/dashboard/');
   } else {
-    alert(response.statusText);
+      alert(response.statusText);
   }
-}
+};
+
+// add the 'Event Listeners' to the page
+document.querySelector('.btnDeletePost').addEventListener('click', deleteFormHandler);
+
+
+
+// const posts = document.querySelectorAll('.delete-post-id');
+
+// async function deletePost(id) {
+//   const response = await fetch(`/api/posts/${id}`, {
+//     method: 'DELETE',
+//   });
+
+//   if (response.ok) {
+//     document.location.replace('/dashboard');
+//   } else {
+//     alert(response.statusText);
+//   }
+// }
+
+// posts.forEach((post) => {
+//   post.addEventListener('click', () => {
+//     deletePost(post.dataset.postId);
+//   });
+// });
+
+
+
+
+
+
+
+
+
+
+// async function deleteFormHandler(event) {
+//   event.preventDefault();
+
+//   const id = window.location.toString().split('/')[
+//     window.location.toString().split('/').length-1
+//   ];
+
+//   const response = await fetch(`/api/posts/${id}`, {
+//     method: 'DELETE',    
+//   });    
+
+//   if (response.ok) {
+//     document.location.replace('/dashboard/');
+//   } else {
+//     alert(response.statusText);
+//   }
+// }
 
 // document.querySelector('.delete-post-btn').addEventListener('click', deleteFormHandler);
+
+
+
 
 // async function deleteFormHandler(event) {
 //   event.preventDefault();

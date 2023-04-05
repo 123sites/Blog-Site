@@ -1,0 +1,25 @@
+{{!-- This is the Handlebars template for the body of the home page --}}
+<div class="row justify-content-center">
+    <div class="col-11 mt-4">
+        <h1 class="shadow bg-secondary p-2 text-dark bg-opacity-10">Your Feed</h1>
+    </div>
+    <div class="col-12 col-md-11 col-xl-10 mt-3">
+        {{#each posts as |post| }}
+            {{> post-body post}}
+        {{/each}}
+    </div>
+</div>
+
+
+
+
+
+{{!-- <div class="text-center">
+  <h2>{{name}}</h2>
+  <p>{{{get_emoji}}}</p>
+  <p>{{content}}</p>
+  <p>Created by {{user.name}} on {{format_date date_created}}</p>
+  <p>
+    <button class="btn btn-primary">Create a Post!</button>
+  </p>
+</div> --}}

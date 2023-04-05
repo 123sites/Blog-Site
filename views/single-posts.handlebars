@@ -1,10 +1,123 @@
-<div class='page-singlepost'>
+<div class="text">
+	<div class="container blogBoxCont">
+		<div class="row headerRow">
+			<div class="col-8">
+				<h2 class="blogTitle text-uppercase">{{title}}</h2>
+			</div>
+			<div class="col-4">
+				<p class="blogCreate text-right">Created by: {{user.username}} on {{format_date date_created}}</p>
+			</div>
+		</div>
+		<p class="text-center blogDescTwo">{{description}}</p>
+		</div>	
+</div>
+
+		{{#if logged_in}}
+
+		<form class="new-comment-form formCont d-flex flex-wrap justify-content-center" data-blogid={{id}}>
+			<div class="textAreaCont p-2">
+				<textarea id='comment_description' name="comment-body"
+				placeholder="Enter a comment here..."
+				cols="30"
+				rows="2"></textarea>
+			</div>
+			<div class="btnComment p-2">
+				<button class="button btn btn-success" type="submit">Add Comment</button>
+			</div>
+		</form>
+
+		{{/if}}
+
+		<h2 class="text-center">Comments:</h2>
+		{{#each comments as |comment|}}
+		<div class="commentCont">
+			<p class="text-center commentText">{{comment.comment_description}}</p>
+			<p class="text-center commentOwner"><span>~</span>Created by {{comment.user.username}} on {{format_date date_created}}<span>~</span></p>
+		</div>
+		{{/each}}
+
+		<script src="/js/add-comment.js"></script>
+
+
+
+
+
+
+
+{{!-- <div id='page-singlepost'>
+  <div id='single-post'>
+    <div id='post-header'>
+      <p id='post-title'>{{post.title}}</p>
+      <p id='post-date'>{{format_date post.date}}</p>
+    </div>
+    <p id='post-body'>{{post.description}}</p>
+    <p id='post-user'>- {{post.user}}</p>
+  </div>
+  <form id='comment-form'>
+    {{#if loggedIn}}
+      <textarea id='comment-field' placeholder='Add comment'></textarea>
+      <h1 id='comment-status'>Required character count above 4</h1>
+      <button type='submit'>Submit</button>
+    {{else}}
+      <textarea
+        id='comment-field'
+        disabled='true'
+        placeholder='To comment on the post you must be logged in.'
+      ></textarea>
+    {{/if}}
+  </form>
+  <hr id='comment-section-divider' />
+  <div id='comment-section'>
+    {{#if post.comments}}
+      {{#each post.comments as |comment|}}
+        {{! #each post.comments == an object with an array ('comments')
+        #each post is the same as saying post.comments.forEach(comment) }}
+        {{! If the boolean is true 'usersComment', that means that comment username is equal to the 
+        current signed in user's username }}
+        {{#if comment.usersComment}}
+        <div id="single-comment" class="users-comment">
+        {{!-- Add the comment id to the edit/delete button so we can extract the value in the click event listener  --}}
+        <div id="comment-control">
+          <p id="new-comment-status">Make sure the comment is greater than 4 characters</p>
+          <button data-comment-id="{{comment.commentId}}" id="confirm-comment-{{comment.commentId}}" class='confirm-comment'>Confirm</button>
+          <button data-comment-id="{{comment.commentId}}" id="edit-comment-{{comment.commentId}}" class='edit-comment'>Edit</button>
+          <button data-comment-id="{{comment.commentId}}" id="delete-comment-{{comment.commentId}}" class='delete-comment'>Delete</button>
+        </div>
+        {{else}}
+        <div id='single-comment'>
+  
+          {{/if}}
+          <div id='comment-wrapper'>
+            <p id='user'>{{comment.user}}</p>
+            <p id='comment'>{{comment.text}}</p>
+          </div>
+          {{! format_date is a helper function we created in utils/helpers }}
+          <p id='comment-date'>{{format_date comment.date}}</p>
+        </div>
+      {{/each}}
+    {{else}}
+      <p>No comments posted</p>
+    {{/if}}
+  </div>
+</div>
+<script src='/js/add-comment.js'></script>
+<script src='/js/edit-comment.js'></script>
+<script src='/js/delete-comment.js'></script> --}}
+
+
+
+
+
+
+
+
+{{!-- <div class='page-singlepost'>
   <div class='single-post'>
     <div class='post-header'>
       <p class='post-title'>{{post.title}}</p>
       <p class='post-date'>{{format_date post.date}}</p>
     </div>
-    <p class='post-body'>{{post.description}}</p>
+    <p class='post-body'>{{post.content}}</p>
     <p class='post-user'>- {{post.user}}</p>
   </div>
   <form class='comment-form'>
@@ -53,7 +166,8 @@
     {{/if}}
   </div>
 </div>
-<script src='/js/add-comment.js'></script>
-<script src='/js/edit-comment.js'></script>
+<script src='/js/comment.js'></script>
+{{!-- <script src='/js/add-comment.js'></script> --}}
+{{!-- <script src='/js/edit-comment.js'></script> --}}
 <script src='/js/delete-comment.js'></script>
-
+ --}}

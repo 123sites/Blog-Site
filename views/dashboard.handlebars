@@ -1,4 +1,250 @@
-<div class="addPost-container">
+
+{{!-- render the Dashboard view here --}}
+{{#if posts.length}}
+  {{!-- This renders if there are previous posts by the logged in User --}}
+  <div class="row justify-content-center">
+    <div class="row text-center">
+      <h3>{{username}}'s Posts</h3>
+      <a class="link" href="/api/dashboard/new">
+        <button class="btn btn-sm btn-primary ml-4">Make New Post</button>
+      </a>
+    </div>
+  </div>
+  {{#each posts as |post|}}
+    <div class="row justify-content-center">
+      {{> my-posts post}}
+    </div>
+  {{/each}}
+{{else}}
+  {{!-- This renders if there is no posts by the logged in User --}}
+  <div class="row justify-content-center">
+    <div class="mt-3">
+      <h3>Make your first post!</h3>
+    </div>
+  </div>
+  <div class="row mt-3 justify-content-center">
+
+    <a class="link" href="/api/dashboard/new">
+      <button class="btn btn-sm btn-primary ml-2">New Post</button>
+    </a>
+  </div>
+{{/if}}
+
+{{!-- 
+
+<div class="row">
+  <div class="col-auto">
+    <h2><span>~</span>Welcome, {{username}}!<span>~</span></h2>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-6">
+    <h3>Create a New Blog:</h3>
+
+    <form class="form new-blog-form">
+      <div class="form-group">
+        <input class="form-input" type="text" id="blog-title" name="blog-title" placeholder="Blog Title" />
+      </div>
+      
+      <div class="form-group">
+        <textarea class="form-input" id="blog-desc" name="blog-desc" placeholder="Blog Content"></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Create</button>
+      </div>
+    </form>
+  </div>
+
+  {{#if blogs.length}}
+  <div class="col-md-6 blog-list">
+    <h3>Current Blogs:</h3>
+
+    {{#each blogs as |blog|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/blog/{{blog.id}}">{{blog.title}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-danger" data-id="{{blog.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>
+
+<script src="/js/dashboard.js"></script> --}}
+
+
+
+
+
+
+
+
+
+
+{{!-- <div class='addPost-container'>
+  <h1>Add Post</h1>
+  <form id='addPost-form'>
+    <input
+      type='text'
+      id='add-post-title'
+      placeholder='Post Title  *required'
+    />
+    <textarea
+      type='text'
+      id='add-post-desc'
+      placeholder='Post description  *required'
+    ></textarea>
+
+    <h1 id='addpost-status'> 
+      Post title and body need to be greater than 4 characters.
+    </h1>
+    <button id='add-post' type='submit'>Post</button>
+  </form>
+</div>
+<hr id='dashboardHr' />
+<h1 id='your-posts'>Your posts</h1>
+<div id='dashboard-posts'>
+  {{#if posts}}{{else}}
+    <p id='no-posts'>You have not uploaded any posts</p>
+  {{/if}}
+
+  {{#each posts as |post|}}
+    <div id='single-post'>
+      <div id='post-header'>
+        <h1 id='post-title'>{{post.title}}</h1>
+        <p id='post-date'>{{format_date post.date}}</p>
+      </div>
+      <p id='post-body'>
+        {{post.description}}
+      </p>
+      <div id='post-controls'>
+        <button
+          data-post-id={{post.postId}}
+          class='edit-post-id'
+          id='edit-post-{{post.postId}}'
+        >Edit post</button>
+        <button
+          data-post-id={{post.postId}}
+          class='delete-post-id'
+          id='delete-post-{{post.postId}}'
+        >Delete post</button>
+        <button
+          data-post-id={{post.postId}}
+          id='view-comments-{{post.postId}}'
+          class='view-comments'
+        >View comments</button>
+        <button
+          data-post-id={{post.postId}}
+          class='confirm-post'
+          id='confirm-post-{{post.postId}}'
+        >Confirm</button>
+        <p id='edit-post-status'>Post title and body need to be 
+          greater than 4 characters.
+        </p>
+      </div>
+    </div>
+  {{/each}}
+</div>
+<script src='/js/add-post.js'></script>
+<script src='/js/edit-post.js'></script>
+<script src='/js/delete-post.js'></script>
+<script src='/js/view-comments.js'></script>
+  --}}
+
+{{!-- 
+MOVED TO THE MAIN
+<div class='addPost-container'>
+  <h1>Add Post</h1>
+  <form id='addPost-form'>
+    <input
+      type='text'
+      id='add-post-title'
+      placeholder='Post Title  *required'
+    />
+    <textarea
+      type='text'
+      id='add-post-desc'
+      placeholder='Post description  *required'
+    ></textarea>
+
+    <h1 id='addpost-status'>Fill in all required inputs with character count
+      above 4</h1>
+    <button id='add-post' type='submit'>Post</button>
+  </form>
+</div>
+<hr id='dashboardHr' />
+<h1 id='your-posts'>Your posts</h1>
+<div id='dashboard-posts'>
+  {{#if posts}}{{else}}
+    <p id='no-posts'>You have not uploaded any posts</p>
+  {{/if}}
+
+  {{#each posts as |post|}}
+    <div id='single-post'>
+      <div id='post-header'>
+        <h1 id='post-title'>{{post.title}}</h1>
+        <p id='post-date'>{{format_date post.date}}</p>
+      </div>
+      <p id='post-body'>
+        {{post.description}}
+      </p>
+      <div id='post-controls'>
+        <button
+          data-post-id={{post.postId}}
+          class='edit-post-id'
+          id='edit-post-{{post.postId}}'
+        >Edit post</button>
+        <button
+          data-post-id={{post.postId}}
+          class='delete-post-id'
+          id='delete-post-{{post.postId}}'
+        >Delete post</button>
+        <button
+          data-post-id={{post.postId}}
+          id='view-comments-{{post.postId}}'
+          class='view-comments'
+        >View comments</button>
+        <button
+          data-post-id={{post.postId}}
+          class='confirm-post'
+          id='confirm-post-{{post.postId}}'
+        >Confirm</button>
+        <p id='edit-post-status'>Make sure the new post title and body are
+          greater than 4 characters</p>
+      </div>
+    </div>
+  {{/each}}
+</div>
+<script src='/js/add-post.js'></script>
+<script src='/js/edit-post.js'></script>
+<script src='/js/delete-post.js'></script>
+<script src='/js/view-comments.js'></script> --}}
+
+{{!-- <!-- Loop over each object in the post array -->
+{{#each posts as |post| }}
+<div class="row mb-4 post">
+  <div class="col-md-5">
+    <h2>
+      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
+      {{{get_emoji}}}
+      <a href="/post/{{post.id}}">{{post.username}}</a>
+    </h2>
+    <p>Created by {{post.user.username}} on {{format_date post.date_created}}</p>
+  </div>
+  <div class="col-md-7">
+    <p>
+      {{post.content}}
+    </p>
+  </div>
+</div>
+{{/each}} --}}
+
+
+{{!-- <div class="addPost-container">
   <h1>Add Post</h1>
   <form id="addPost-form">
     <input
@@ -62,4 +308,4 @@
 <script src="/js/add-post.js"></script>
 <script src="/js/edit-post.js"></script>
 <script src="/js/delete-post.js"></script>
-<script src="/js/view-comments.js"></script>
+<script src="/js/view-comments.js"></script> --}}

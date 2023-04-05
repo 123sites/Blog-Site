@@ -17,9 +17,13 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    content: {
-      type: DataTypes.TEXT,
+    description: {
+      type: DataTypes.STRING,
+    },
+    date_created: {
+      type: DataTypes.DATE,
       allowNull: false,
+      defaultValue: DataTypes.NOW,
     },
     user_id: {
       type: DataTypes.INTEGER,
@@ -28,25 +32,90 @@ Post.init(
         key: 'id',
       },
     },
-    date_created: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
-    },
   },
   {
-    // Pass in the imported sequelize connection.
     sequelize,
-    // Don't pluralize name of database table.
+    timestamps: false,
     freezeTableName: true,
-    // Use underscores instead of camel-casing.
     underscored: true,
-    // Make it so our model name stays in lowercase in the database.
-    modelName: "post",
+    modelName: 'post',
   }
 );
 
 module.exports = Post;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//   {
+//     id: {
+//       type: DataTypes.INTEGER,
+//       allowNull: false,
+//       primaryKey: true,
+//       autoIncrement: true,
+//     },
+//     title: {
+//       type: DataTypes.STRING,
+//       allowNull: false,
+//     },
+//     description: {
+//       type: DataTypes.TEXT,
+//       allowNull: false,
+//     },
+//     user_id: {
+//       type: DataTypes.INTEGER,
+//       references: {
+//         model: 'user',
+//         key: 'id',
+//       },
+//     },
+//     date_created: {
+//       type: DataTypes.DATE,
+//       allowNull: false,
+//       defaultValue: DataTypes.NOW,
+//     },
+//   },
+//   {
+//     // Pass in the imported sequelize connection.
+//     sequelize,
+//     // Don't pluralize name of database table.
+//     freezeTableName: true,
+//     // Use underscores instead of camel-casing.
+//     underscored: true,
+//     // Make it so our model name stays in lowercase in the database.
+//     modelName: "post",
+//   }
+// );
+
+// module.exports = Post;
+
+
+
+
+
+
+
 
 // const { Model, DataTypes } = require('sequelize');
 // const sequelize = require('../config/connection');

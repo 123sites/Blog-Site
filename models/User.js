@@ -21,6 +21,7 @@ User.init(
     username: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
     password: {
       type: DataTypes.STRING,
@@ -50,6 +51,12 @@ User.init(
 );
 
 module.exports = User;
+
+
+
+
+
+
 
 // Creates fields for the User Model.
 // User.init(

@@ -16,63 +16,30 @@
 //   event.preventDefault();
 
 //   const title = document.querySelector('input[name="post-title"]').value;
-//   const post_text = document.querySelector('textarea[name="post-text"]').value;
+//   const post_content = document.querySelector(
+//     'input[name="post-content"]'
+//   ).value;
 
 //   const response = await fetch(`/api/posts`, {
-//     method: 'POST',
+//     method: "POST",
 //     body: JSON.stringify({
 //       title,
-//       content
+//       contents
 //     }),
 //     headers: {
-//       'Content-Type': 'application/json'
-//     }
+//       "Content-Type": "application/json",
+//     },
 //   });
+//   console.log(response);
 
 //   if (response.ok) {
-//     document.location.replace('/dashboard');
+//     document.location.replace("/dashboard");
 //   } else {
 //     alert(response.statusText);
 //   }
 // }
+// console.log(newFormHandler);
 
-// document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);
-
-
-async function commentFormHandler(event) {
-  event.preventDefault();
-
-  const comment_text = document
-    .querySelector('textarea[name="comment-body"]')
-    .value.trim();
-
-  const post_id = window.location.toString().split("/")[
-    window.location.toString().split("/").length - 1
-  ];
-  console.log(post_id);
-
-  if (comment_text) {
-    const response = await fetch("/api/comments", {
-      method: "POST",
-      body: JSON.stringify({
-        title,
-        content,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    console.log(response);
-
-    if (response.ok) {
-      document.location.reload();
-    } else {
-      alert(response.statusText);
-    }
-  }
-}
-console.log(commentFormHandler);
-
-document
-  .querySelector(".comment-form")
-  .addEventListener("submit", commentFormHandler);
+// document
+//   .querySelector(".new-post-form")
+//   .addEventListener("submit", newFormHandler);
