@@ -12,40 +12,59 @@
 // When idle on the site for more than a set time, I'm able to view comments but I am prompted to log in again
 // before I can add, update, or delete comments.
 
-// TOP OR BOTTOM CODE?????????????????????????????????????????????????????????????????????????????????
 
 async function deleteFormHandler(event) {
   event.preventDefault();
 
-  const id = window.location.toString().split("/")[
-    window.location.toString().split("/").length - 1
+  const id = window.location.toString().split('/')[
+    window.location.toString().split('/').length-1
   ];
 
   const response = await fetch(`/api/posts/${id}`, {
-    method: "DELETE",
-    body: JSON.stringify({
-      title,
-      contents,
-      username,
-      date_created,
-    }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  console.log(response);
+    method: 'DELETE',    
+  });    
 
   if (response.ok) {
-    document.location.replace("/dashboard/");
+    document.location.replace('/dashboard/');
   } else {
     alert(response.statusText);
   }
 }
-console.log("delete-post.js");
 
-document
-  .querySelector(".delete-post-btn")
-  .addEventListener("click", deleteFormHandler);
+// document.querySelector('.delete-post-btn').addEventListener('click', deleteFormHandler);
+
+// async function deleteFormHandler(event) {
+//   event.preventDefault();
+
+//   const id = window.location.toString().split("/")[
+//     window.location.toString().split("/").length - 1
+//   ];
+
+//   const response = await fetch(`/api/posts/${id}`, {
+//     method: "DELETE",
+//     body: JSON.stringify({
+//       title,
+//       contents,
+//       username,
+//       date_created,
+//     }),
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   });
+//   console.log(response);
+
+//   if (response.ok) {
+//     document.location.replace("/dashboard/");
+//   } else {
+//     alert(response.statusText);
+//   }
+// }
+// console.log("delete-post.js");
+
+// document
+//   .querySelector(".delete-post-btn")
+//   .addEventListener("click", deleteFormHandler);
 
 // const posts = document.querySelectorAll('.delete-post-id');
 

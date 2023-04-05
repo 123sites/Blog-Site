@@ -16,35 +16,64 @@ async function editFormHandler(event) {
   event.preventDefault();
 
   const title = document.querySelector('input[name="post-title"]').value;
-  const post_content = document.querySelector(
-    'input[name="post-content"]'
-  ).value;
-  const id = window.location.toString().split("/")[
-    window.location.toString().split("/").length - 1
+  const post_text = document.querySelector('textarea[name="post-text"]').value;
+  const id = window.location.toString().split('/')[
+    window.location.toString().split('/').length-1
   ];
 
   const response = await fetch(`/api/posts/${id}`, {
-    method: "PUT",
+    method: 'PUT',
     body: JSON.stringify({
       title,
-      contents,
-      username,
-      date_created,
+      content
     }),
     headers: {
-      "Content-Type": "application/json",
-    },
+      'Content-Type': 'application/json'
+    }
   });
-  console.log(response);
 
   if (response.ok) {
-    document.location.replace("/dashboard/");
+    document.location.replace('/dashboard/');
   } else {
     alert(response.statusText);
   }
 }
-console.log(editFormHandler);
 
-document
-  .querySelector(".edit-post-form")
-  .addEventListener("submit", editFormHandler);
+document.querySelector('.edit-post-form').addEventListener('submit', editFormHandler);
+
+// async function editFormHandler(event) {
+//   event.preventDefault();
+
+//   const title = document.querySelector('input[name="post-title"]').value;
+//   const post_content = document.querySelector(
+//     'input[name="post-content"]'
+//   ).value;
+//   const id = window.location.toString().split("/")[
+//     window.location.toString().split("/").length - 1
+//   ];
+
+//   const response = await fetch(`/api/posts/${id}`, {
+//     method: "PUT",
+//     body: JSON.stringify({
+//       title,
+//       contents,
+//       username,
+//       date_created,
+//     }),
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   });
+//   console.log(response);
+
+//   if (response.ok) {
+//     document.location.replace("/dashboard/");
+//   } else {
+//     alert(response.statusText);
+//   }
+// }
+// console.log(editFormHandler);
+
+// document
+//   .querySelector(".edit-post-form")
+//   .addEventListener("submit", editFormHandler);

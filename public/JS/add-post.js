@@ -12,6 +12,33 @@
 // When idle on the site for more than a set time, I'm able to view comments but I am prompted to log in again
 // before I can add, update, or delete comments.
 
+// async function newFormHandler(event) {
+//   event.preventDefault();
+
+//   const title = document.querySelector('input[name="post-title"]').value;
+//   const post_text = document.querySelector('textarea[name="post-text"]').value;
+
+//   const response = await fetch(`/api/posts`, {
+//     method: 'POST',
+//     body: JSON.stringify({
+//       title,
+//       content
+//     }),
+//     headers: {
+//       'Content-Type': 'application/json'
+//     }
+//   });
+
+//   if (response.ok) {
+//     document.location.replace('/dashboard');
+//   } else {
+//     alert(response.statusText);
+//   }
+// }
+
+// document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);
+
+
 async function commentFormHandler(event) {
   event.preventDefault();
 
@@ -29,10 +56,7 @@ async function commentFormHandler(event) {
       method: "POST",
       body: JSON.stringify({
         title,
-        contents,
-        username,
-        date_created, 
-        comment
+        content,
       }),
       headers: {
         "Content-Type": "application/json",

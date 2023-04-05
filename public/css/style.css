@@ -9,19 +9,19 @@
 
 body {
   height: 100vh;
-  background-color: lightblue;
+  background-color: rgb(219, 240, 251)
 }
 
 header, h1 {
-  background-color: lightskyblue;
+  background-color: rgb(53, 130, 255);
   padding: 10px;
-  color: white !important;
+  color: whitesmoke !important;
 }
 
 header a {
   margin: 10px;
   padding: 5px;
-  color: white !important;
+  color: whitesmoke !important;
 }
 
 .card-title {
