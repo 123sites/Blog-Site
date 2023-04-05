@@ -15,11 +15,12 @@
 const commentFormHandler = async function (event) {
   event.preventDefault();
 
-  const blog_id = document.querySelector(".new-comment-form").dataset.postid;
+  const blog_id = document.querySelector(".new-comment-form").dataset.blogid;
 
   const comment_description = document
     .querySelector("#comment_description")
     .value.trim();
+  console.log(comment_description);
 
   if (comment_description) {
     await fetch("/api/comments", {
@@ -35,6 +36,7 @@ const commentFormHandler = async function (event) {
     document.location.reload();
   }
 };
+console.log(commentFormHandler);
 
 document
   .querySelector(".new-comment-form")

@@ -46,6 +46,7 @@ async function loginFormHandler(event) {
     }
   }
 }
+console.log(loginFormHandler);
 
 // Goes to login template
 const signupFormHandler = async (event) => {
@@ -69,6 +70,7 @@ const signupFormHandler = async (event) => {
   }
 };
 console.log(signupFormHandler);
+
 document
   .querySelector(".login-form")
   .addEventListener("submit", loginFormHandler);

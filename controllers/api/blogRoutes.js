@@ -28,6 +28,7 @@ router.post('/', withAuth, async (req, res) => {
     res.status(400).json(err);
   }
 });
+console.log(Blog.create);
 
 router.delete('/:id', withAuth, async (req, res) => {
   try {
@@ -48,6 +49,7 @@ router.delete('/:id', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+console.log(router.delete);
 
 module.exports = router;
 

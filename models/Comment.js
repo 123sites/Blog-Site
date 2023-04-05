@@ -11,7 +11,7 @@ Comment.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    comment_description: {
+    description: {
       type: DataTypes.STRING,
     },
     date_created: {
@@ -42,6 +42,8 @@ Comment.init(
     modelName: "comment",
   }
 );
+console.log(Comment.init);
+
 module.exports = Comment;
 
 // Comment.init(

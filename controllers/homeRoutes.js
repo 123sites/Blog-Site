@@ -108,6 +108,7 @@ router.get('/signUp', (req, res) => {
 	}
 	res.render('signUp');
 });
+console.log("homeRoutes.js");
 
 module.exports = router;
 
