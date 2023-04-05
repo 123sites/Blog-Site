@@ -28,7 +28,6 @@ router.get('/', (req,res) => {
       res.status(500).json(err)
   });
 });
-console.log(Comment.findAll({}));
 
 router.get('/:id', (req, res) => {
   Comment.findAll({
@@ -42,7 +41,7 @@ router.get('/:id', (req, res) => {
           res.status(500).json(err);
       })
 });
-console.log(router.get);
+
 
 router.post('/', async (req, res) => {
 try {
@@ -55,7 +54,7 @@ try {
   res.status(500).json(err);
 }
 });
-console.log(router.post);
+
 
 router.delete('/:id', withAuth, async (req, res) => {
 try {
@@ -74,7 +73,7 @@ try {
   res.status(500).json(err);
 }
 });
-console.log(router.delete);
+
 
 module.exports = router;
 

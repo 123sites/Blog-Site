@@ -1,19 +1,19 @@
 [
   {
     "title": "The Latest Technology News!",
-    "description": "This is the latest technology information you need to know!",
+    "comment_description": "This is the latest technology information you need to know!",
     "date_created": "December 1, 2022",
     "user-id": 1
   },
   {
     "title": "The Ultimate Tech Guide!",
-    "description": "The ultimate guide to the best tech tips!",
+    "comment_description": "The ultimate guide to the best tech tips!",
     "date_created": "December 12, 2022",
     "user-id": 2
   },
   {
     "title": "Top 10 Tech Gadgets!",
-    "description": "The Top 10 gadget must-haves!",
+    "comment_description": "The Top 10 gadget must-haves!",
     "date_created": "December 15, 2022",
     "user-id": 3
   }

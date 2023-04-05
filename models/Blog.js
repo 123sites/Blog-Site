@@ -39,7 +39,6 @@ Blog.init(
     modelName: "blog",
   }
 );
-console.log(Blog.init);
 
 module.exports = Blog;
 

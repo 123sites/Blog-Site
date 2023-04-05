@@ -14,6 +14,5 @@ const logout = async () => {
     alert(response.statusText);
   }
 };
-console.log("After logout, before event listener");
 
 document.querySelector("#logout").addEventListener("click", logout);

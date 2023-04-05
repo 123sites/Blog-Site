@@ -7,7 +7,7 @@
 
 body {
   height: 100vh;
-  background-color: rgb(219, 240, 251)
+  background-color: rgb(233, 221, 203)
 }
 
 header,
@@ -16,25 +16,26 @@ h1 {
   padding: 10px;
   color: whitesmoke !important;
 }
-
 header a {
   margin: 10px;
   padding: 5px;
   color: whitesmoke !important;
 }
 
+h3 {
+  font-weight: bold
+}
 .card-title {
-  background-color: lightgray;
-  color: rgb(6, 7, 8);
+  display: flex;
+  justify-content: center;
+  background-color: rgb(32, 33, 34);
+  color: whitesmoke;
   padding: 5px;
 }
 
-new-blog-form,
-form-input,
-blog-list,
-blog-card,
+.car-body,
 .card {
-  background-color: lightgray;
+  background-color: rgb(170, 190, 232);
 }
 
 .card h5,
@@ -44,9 +45,21 @@ nav-text {
   font-style: normal;
 }
 
+.form-text {
+  margin-top: 0.25rem;
+  font-size: 15px;
+  color: rgb(0, 26, 69);
+  justify-content: center;
+  display: flex;
+  font-style: bold;
+}
+
 button {
+  display: flex!important;
   padding: 3px;
   margin: 5px;
+  align-items: center!important;
+  background-color: rgb(126, 237, 126);
 }
 
 /* .post {

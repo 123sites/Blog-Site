@@ -50,7 +50,6 @@ User.init(
     modelName: "user",
   }
 );
-console.log(User.init);
 
 module.exports = User;
 

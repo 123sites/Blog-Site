@@ -1,9 +1,9 @@
 {{! This is the template to render the user signup fields }}
 <div class="row justify-content-center">
   <div class="col-md-3">
-    <div class="card my-3">
+    <div class="card my-5">
       <div class="card-body">
-        <h3 class="card-title">Sign-up</h3>
+        <h3 class="row justify-content-center">Sign-Up Here!</h3>
         <form class="signup-form">
           <div class="mb-3">
             <label for="username-signup">Username:</label>
@@ -12,15 +12,23 @@
           <div class="mb-3">
             <label for="email-signup">Email:</label>
             <input class="form-control" type="email" id="email-signup" />
-            <div id="emailHelp" class="form-text">We'll never share your email
-              with anyone else.</div>
+            <div id="emailHelp" class="form-text">We don't share any of
+              your information.</div>
           </div>
           <div class="mb-3">
             <label for="password-signup">Password:</label>
             <input class="form-control" type="password" id="password-signup" />
           </div>
-          <div class="mb-3">
-            <button class="btn btn-primary" type="submit">Sign-up</button>
+          <div class="container">
+            <div class="row justify-content-md-center">
+              <div class="col col-lg-2">
+              </div>
+              <div class="col-md-auto">
+                <button class="btn btn-success" type="submit">Sign-up</button>
+              </div>
+              <div class="col col-lg-2">
+              </div>
+            </div>
           </div>
         </form>
       </div>

@@ -21,7 +21,6 @@ const newFormHandler = async (event) => {
     }
   }
 };
-console.log("After newFormHandler, before delButtonHandler");
 
 const delButtonHandler = async (event) => {
   if (event.target.hasAttribute("data-id")) {
@@ -38,7 +37,6 @@ const delButtonHandler = async (event) => {
     }
   }
 };
-console.log("After delButtonHandler, before event listeners");
 
 document
   .querySelector(".new-blog-form")

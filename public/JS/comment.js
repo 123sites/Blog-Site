@@ -36,7 +36,6 @@ const commentFormHandler = async function (event) {
     document.location.reload();
   }
 };
-console.log(commentFormHandler);
 
 document
   .querySelector(".new-comment-form")
