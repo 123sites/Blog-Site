@@ -106,4 +106,4 @@ module.exports = { User, Blog, Comment };
 //   foreignKey: 'post_id'
 // });
 
-module.exports = { User, Post, Comment };
+// module.exports = { User, Post, Comment };
