@@ -59,23 +59,6 @@
 //   }
 // }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Add the event handler for the form submission
 // addPostForm.addEventListener('submit', newPostHandler);
 // async function editFormHandler(event) {
@@ -104,12 +87,8 @@
 //     alert(response.statusText);
 //   }
 // }
- 
 
 // document.querySelector('.edit-post').addEventListener('submit', editFormHandler);
-
-
-
 
 // async function commentFormHandler(event) {
 //   event.preventDefault();
@@ -174,4 +153,3 @@
 // }
 
 // document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);
-

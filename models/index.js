@@ -1,49 +1,34 @@
 // Import all models.
-const User = require('./User');
-const Post = require('./Post');
-const Comment = require('./Comment')
+const User = require("./User");
+const Blog = require("./Blog");
+const Comment = require("./Comment");
 
 // The FOREIGN KEY constraint is used to prevent actions that would destroy links between tables.
 // It refers to the PRIMARY KEY in another table.
-// The table with the foreign key is called the child table, and the table with the primary key 
+// The table with the foreign key is called the child table, and the table with the primary key
 // is called the referenced or parent table.
 // https://www.w3schools.com/sql/sql_foreignkey.asp
 
 // Sequelize Associations: https://sequelize.org/docs/v6/core-concepts/assocs/
 
-
-User.hasMany(Post, {
-  foreignKey: 'user_id',
-  onDelete: 'CASCADE'
+User.hasMany(Blog, {
+  foreignKey: "user_id",
+  onDelete: "CASCADE",
 });
 
-Post.belongsTo(User, {
-  foreignKey: 'user_id'
+Blog.belongsTo(User, {
+  foreignKey: "user_id",
 });
 
-Post.hasMany(Comment,{
-  foreignKey: 'post_id'
-})
+Blog.hasMany(Comment, {
+  foreignKey: "blog_id",
+});
 
 Comment.belongsTo(User, {
-    foreignKey: 'user_id',
-})
+  foreignKey: "user_id",
+});
 
-module.exports = { User, Post, Comment };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+module.exports = { User, Blog, Comment };
 
 // User.hasMany(Post, {
 //   foreignKey: 'user_id',
@@ -72,8 +57,6 @@ module.exports = { User, Post, Comment };
 // Post.hasMany(Comment, {
 //   foreignKey: 'post_id',
 // });
-
-
 
 // // A user can have lots of posts.
 // User.hasMany(Post, {
@@ -98,7 +81,6 @@ module.exports = { User, Post, Comment };
 //   // onDelete: 'SET NULL',
 // });
 
-
 // // Comment belongs (is attached) to the post.
 // // When delete, post by that user is gone.
 // Comment.belongsTo(Post, {
@@ -121,6 +103,5 @@ module.exports = { User, Post, Comment };
 // Post.hasMany(Comment, {
 //   foreignKey: 'post_id'
 // });
-
 
 module.exports = { User, Post, Comment };
