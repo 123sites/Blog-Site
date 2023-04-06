@@ -1,9 +1,9 @@
 {{! This is the login field for existing users }}
-<div class="row justify-content-center">
-  <div class="col-md-3">
+<div class="row my-5 justify-content-center">
+  <div class="col-md-5">
     <div class="card my-3">
       <div class="card-body">
-        <h3 class="card-title">Existing User Login:</h3>
+        <h3 class="row justify-content-center">Existing User Login:</h3>
         <form class="login-form">
           <div class="mb-3">
             <label for="email-login">Email:</label>
@@ -13,114 +13,21 @@
             <label for="password-login">Password:</label>
             <input class="form-control" type="password" id="password-login" />
           </div>
-          <div class="mb-3">
-            <button class="btn btn-primary" type="submit">Login</button>
-            <a class="btn btn-primary" href="/signup" role="button">Not a
-              Member? Click to Sign-up!</a>
+          <div id="row my-5 justify-content-lg-center">
+            <div class="userPrompt mb-3">
+              <button
+                class="btn bg-success p-2 text-white bg-opacity-75"
+                type="submit"
+              >Login</button>
+              <a
+                class="btn bg-success p-2 text-white bg-opacity-75"
+                href="/signup"
+                role="button"
+              >Not a Member? Click to Sign-up!</a>
+            </div>
           </div>
         </form>
       </div>
     </div>
   </div>
 </div>
-{{! helper to do User login }}
-<script src="/js/login.js"></script>
-
-{{! <div class="row">
-  <div class="col justify-content-center">
-    <h2 class="login">Login</h2>
-    <form class="form login-form">
-      <div class="form-group">
-        <input class="form-input" type="text" placeholder="Username" id="username-login" />
-      </div>
-      <div class="form-group">
-        <input class="form-input" type="password" placeholder="Password" id="password-login" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">Login</button>
-      </div>
-      <div>
-        <a href="/signUp">Sign Up Instead</a>
-      </div>
-    </form>
-  </div>
-</div>
-
-<script src="./js/login.js"></script> }}
-
-{{! <div class='login-container'>
-  <h1>Login</h1>
-  <form id='login-form'>
-    <input type='email' id='email-login' placeholder='Email  *required' />
-    <input
-      type='password'
-      id='password-login'
-      placeholder='Password  *required'
-    />
-    <h1 id='signin-status'>Fill in required values</h1>
-    <button id='login-btn' type='submit'>Login</button>
-  </form>
-</div>
-<hr id='loginHr' />
-<div class='signup-container'>
-  <h1>Sign up</h1>
-  <form id='signup-form'>
-    <input type='text' id='username-signup' placeholder='Username  *required' />
-    <input type='email' id='email-signup' placeholder='Email  *required' />
-    <input
-      type='password'
-      id='password-signup'
-      placeholder='Password  *required'
-    />
-    <h1 id='signup-status'>Fill in all required inputs with character count
-      above 4</h1>
-    <button id='submit-btn' type='submit'>Signup</button>
-  </form>
-</div>
-<script src='/js/login.js'></script>
-<script src='/js/signup.js'></script> }}
-
-{{! 
-<div class="row">
-  <div class="col-md-6">
-    <h2>Login:</h2>
-
-    <form class="form login-form">
-      <div class="form-group">
-        <label for="email-login">Email:</label>
-        <input class="form-input" type="text" id="email-login" />
-      </div>
-      <div class="form-group">
-        <label for="password-login">Password:</label>
-        <input class="form-input" type="password" id="password-login" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">Login</button>
-      </div>
-    </form>
-  </div>
-  <div class="col-md-6">
-    <h2>Sign-up:</h2>
-
-    <form class="form signup-form">
-      <div class="form-group">
-        <label for="name-signup">Name:</label>
-        <input class="form-input" type="text" id="username-signup" />
-      </div>
-      <div class="form-group">
-        <label for="email-signup">Email:</label>
-        <input class="form-input" type="text" id="email-signup" />
-      </div>
-      <div class="form-group">
-        <label for="password-signup">Password:</label>
-        <input class="form-input" type="password" id="password-signup" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">Sign-up</button>
-      </div>
-    </form>
-  </div>
-</div>
- 
-<script src="./js/login.js"></script>
-   }}

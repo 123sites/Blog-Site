@@ -78,3 +78,124 @@
 
 
 
+
+
+
+{{!--
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8' />
+  <meta name='viewport' content='width=device-width, user-scalable=no' />
+  <link rel='stylesheet' href='../../stylesheets/styles.css' type='text/css' />
+  <link rel='icon' type='image/x-icon' href='/images/favicon.ico' />
+  <title>The Ultimate Tech Blog!</title>
+</head>
+
+<body>
+  {{!-- <div class='wrapper'>
+    <header>
+      <div id='header-head'>
+        <h1 id='header-logo'>The Ultimate Tech Blog</h1> --}}
+        {{! If the username is available, display it }}
+        {{#if username}}
+        <p id='loggedin'><span>Logged in as</span>
+          <em style='font-weight: 800'>{{username}}</em>
+        </p>
+        {{/if}}
+      </div>
+      <nav>
+        <a class='navItem' href='/'>Home</a>
+        <a class='navItem' href='/dashboard'>Dashboard</a>
+        {{! loggedIn is a sessions value we created (saved) when a user makes an account
+        and logs in, from there, it becomes accessible via all routes }}
+        {{#if loggedIn}}
+        <a class='navItem' id='logout'>Logout</a>
+        {{else}}
+        <a class='navItem' href='/login'>Login</a>
+        {{/if}}
+      </nav>
+
+      <div id='bg'></div>
+    </header>
+    <main>
+      {{{body}}}
+    </main>
+  </div>
+</body>
+
+</html>
+<script src='/js/dashboard.js'></script>
+{{#if loggedIn}}
+<script src='/js/logout.js'></script>
+{{/if}} --}}
+
+{{!--
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Ultimate Tech Blog</title>
+  {{!-- Favicon image --}}
+  <link rel="icon" type="image/x-icon" href="/images/Green-Comment-Bubble.ico">
+  <!-- Nunito Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Nunito+Sans&family=Poppins&display=swap"
+    rel="stylesheet">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+  {{!-- CSS --}}
+  <link rel="stylesheet" href="/css/jass.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <header class="nav-header nav-text">
+      <div class="flex-column justify-space-around">
+        <header class="display-flex justify-space-between align-center p-2">
+          <div class="display-flex align-center">
+            <h1 class="">
+              <a href="/">The Ultimate Tech Blog!</a>
+            </h1>
+            {{! If the username is available, display it }}
+            {{#if username}}
+            <p id='loggedin'><span>Logged in as:</span>
+              <em style='font-weight: 800'>{{username}}</em>
+            </p>
+            {{/if}}
+          </div>
+          <nav>
+            <!-- Conditionally render login or logout links -->
+            {{!-- Nav = Sign-up/Sign-in --}}
+            {{#if logged_in}}
+            <a href="/">Home</a>
+            <a href="/dashboard">Dashboard</a>
+            <button class="no-button" id="logout">Logout</button>
+            {{else}}
+            <a href="/">Home</a>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/login">login</a>
+            {{/if}}
+          </nav>
+        </header>
+        <main class="container container-fluid mt-5">
+          <!-- Render the layout -->
+          {{{body}}}
+        </main>
+        <footer>
+
+        </footer>
+      </div>
+      <!-- Render script for logged in users only. -->
+      {{#if logged_in}}
+      <script src="/js/logout.js"></script>
+      {{/if}}
+</body>
+
+</html> --}}

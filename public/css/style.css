@@ -16,6 +16,7 @@ h1 {
   padding: 10px;
   color: whitesmoke !important;
 }
+
 header a {
   margin: 10px;
   padding: 5px;
@@ -25,6 +26,7 @@ header a {
 h3 {
   font-weight: bold
 }
+
 .card-title {
   display: flex;
   justify-content: center;
@@ -35,7 +37,7 @@ h3 {
 
 .car-body,
 .card {
-  background-color: rgb(170, 190, 232);
+  background-color: rgb(222, 182, 130)
 }
 
 .card h5,
@@ -54,19 +56,20 @@ nav-text {
   font-style: bold;
 }
 
-button {
-  display: flex!important;
+.btn button {
+  display: flex !important;
   padding: 3px;
   margin: 5px;
-  align-items: center!important;
+  justify-content:space-around;
+  align-items: center !important;
   background-color: rgb(126, 237, 126);
 }
 
-/* .post {
+.userPrompt {
   display: flex;
-  justify-content: center;
-  margin-top: 15px;
-} */
+  margin: 5px 10px 5px 10px;
+  justify-content: space-evenly;
+}
 
 .content,
 .edited-content {
@@ -81,11 +84,6 @@ button {
   margin-right: 30vw;
   margin-top: 20px;
 }
-
-/* .comment {
-width: 80vw;
-margin-top:20px;
-} */
 
 .title,
 .edited-title {

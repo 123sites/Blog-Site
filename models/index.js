@@ -65,37 +65,3 @@ Blog.hasMany(Comment, {
   foreignKey: 'blog_id',
 });
 
-
-// // Comment to it belongs to the User.
-// // When delete, comment by that user is gone.
-// Comment.belongsTo(User, {
-//   foreignKey: 'user_id',
-//   // See 28 STU PROJECT: Models & index.js.
-//   // onDelete: 'CASCADE',
-//   // onDelete: 'SET NULL',
-// });
-
-// // Comment belongs (is attached) to the post.
-// // When delete, post by that user is gone.
-// Comment.belongsTo(Post, {
-//   foreignKey: 'post_id',
-//   // See 28 STU PROJECT: Models & index.js.
-//   // onDelete: 'CASCADE',
-//   // onDelete: 'SET NULL',
-// });
-
-// // The User can have many comments.
-// // When delete, comment by that user is gone.
-// User.hasMany(Comment, {
-//   foreignKey: 'user_id',
-//   // See 28 STU PROJECT: Models & index.js.
-//   // onDelete: 'CASCADE',
-//   // onDelete: 'SET NULL',
-// });
-
-// // They can post many comments on to the post.
-// Post.hasMany(Comment, {
-//   foreignKey: 'post_id'
-// });
-
-module.exports = { User, Blog, Comment };
