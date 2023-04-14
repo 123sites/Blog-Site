@@ -43,12 +43,16 @@ User.init(
         return updatedUserData;
       },
     },
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: "user",
-  }
-);
+      // Pass in the imported sequelize connection.
+      sequelize,
+      // Don't automatically create timestamp fields
+      timestamps: false,
+      // Don't pluralize name of database table.
+      freezeTableName: true,
+      // Use underscores instead of camel-casing.
+      underscored: true,
+      // Make it so our model name stays in lowercase in the database.
+      modelName: "user",
+  }),
 
-module.exports = User;
+  module.exports = User;
