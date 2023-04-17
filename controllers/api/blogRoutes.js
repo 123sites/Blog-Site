@@ -14,67 +14,67 @@
 
 const router = require('express').Router();
 const { Blog } = require('../../models');
-// const withAuth = require('../../utils/auth');
+const withAuth = require('../../utils/auth');
 
-router.get('/:id', async (req, res) => {
-  try {
-    const userData = await Blog.findOne({
-      where: { id: req.params.id },
-    });
-
-    if (!userData) {
-      res
-        .status(400)
-        .json({ message: 'The email or password is not correct, please try again' });
-      return;
-    }
-
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.loggedIn = true;
-
-      res.json(userData);
-    });
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
-
-module.exports = router;
-
-
-// router.post('/', withAuth, async (req, res) => {
+// router.get('/:id', async (req, res) => {
 //   try {
-//     const newBlog = await Blog.create({
-//       ...req.body,
-//       user_id: req.session.user_id,
+//     const userData = await Blog.findOne({
+//       where: { id: req.params.id },
 //     });
 
-//     res.status(200).json(newBlog);
+//     if (!userData) {
+//       res
+//         .status(400)
+//         .json({ message: 'The email or password is not correct, please try again' });
+//       return;
+//     }
+
+//     req.session.save(() => {
+//       req.session.user_id = userData.id;
+//       req.session.loggedIn = true;
+
+//       res.json(userData);
+//     });
 //   } catch (err) {
 //     res.status(400).json(err);
 //   }
 // });
 
-// router.delete('/:id', withAuth, async (req, res) => {
-//   try {
-//     const blogData = await Blog.destroy({
-//       where: {
-//         id: req.params.id,
-//         user_id: req.session.user_id,
-//       },
-//     });
-
-//     if (!blogData) {
-//       res.status(404).json({ message: '404 Blog ID not found' });
-//       return;
-//     }
-
-//     res.status(200).json(blogData);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
 // module.exports = router;
+
+
+router.post('/', withAuth, async (req, res) => {
+  try {
+    const newBlog = await Blog.create({
+      ...req.body,
+      user_id: req.session.user_id,
+    });
+
+    res.status(200).json(newBlog);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+router.delete('/:id', withAuth, async (req, res) => {
+  try {
+    const blogData = await Blog.destroy({
+      where: {
+        id: req.params.id,
+        user_id: req.session.user_id,
+      },
+    });
+
+    if (!blogData) {
+      res.status(404).json({ message: '404 Blog ID not found' });
+      return;
+    }
+
+    res.status(200).json(blogData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+module.exports = router;
 

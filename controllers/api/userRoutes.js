@@ -58,7 +58,7 @@ router.post('/login', async (req, res) => {
 
     req.session.save(() => {
       req.session.user_id = userData.id;
-      req.session.logged_in = true;
+      req.session.loggedIn = true;
       
       res.json({ user: userData, message: 'You are now logged in!' });
     });
@@ -70,23 +70,16 @@ router.post('/login', async (req, res) => {
 
 router.post('/signup', async (req, res) => {
   try {
-    await User.create(req.body);
-    const dbUserData = await User.create({
-      username: req.body.username,
-      password: req.body.password,
-    });
-
-    const newUserData = await User.findOne({
-      where: { username: req.body.username },
-    });
-
+    const userData = await User.create(req.body);
+    console.log(userData);
     req.session.save(async () => {
-      req.session.user_id = newUserData.id;
+      req.session.user_id = userData.id;
       req.session.loggedIn = true;
-      res.status(200).json(dbUserData);
+      res.status(200).json(userData);
     });
   } catch (err) {
-    res.status(400).json(err);
+    console.log(err);
+    res.status(500).json(err);
   }
 });
 

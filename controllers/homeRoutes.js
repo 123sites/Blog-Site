@@ -14,11 +14,10 @@
 
 // const router = require("express").Router();
 // // const sequelize = require("../config/connection");
-// const { Blog, Comment, User } = require("../models");
+
 
 const router = require('express').Router();
-const Blog = require('../models/Blog');
-const User = require('../models/User');
+const { Blog, Comment, User } = require("../models");
 
 router.get('/', async (req, res) => {
   try {
@@ -39,11 +38,12 @@ router.get('/', async (req, res) => {
     const blogs = blogData.map((blog) =>
       blog.get({ plain: true })
     );
+    console.log(blogs);
 
     const loggedIn = req.session.loggedIn;
     const user_id = req.session.user_id;
 
-    res.render('home', { blogs, loggedIn, user_id });
+    res.render('homepage', { blogs, loggedIn, user_id });
   } catch (err) {
     res.status(500).json(err);
   }
