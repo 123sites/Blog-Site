@@ -14,7 +14,7 @@
 
 const router = require('express').Router();
 const { Blog } = require('../../models');
-const withAuth = require('../../utils/auth');
+// const withAuth = require('../../utils/auth');
 
 router.get('/:id', async (req, res) => {
   try {
@@ -25,7 +25,7 @@ router.get('/:id', async (req, res) => {
     if (!userData) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
+        .json({ message: 'The email or password is not correct, please try again' });
       return;
     }
 

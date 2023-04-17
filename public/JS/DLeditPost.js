@@ -12,46 +12,46 @@
 // When idle on the site for more than a set time, I'm able to view comments but I am prompted to log in again
 // before I can add, update, or delete comments.
 
-const post_id = window.location.href.split('/').pop();
-const user_id = window.location.href.split('/')[4];
+// const post_id = window.location.href.split('/').pop();
+// const user_id = window.location.href.split('/')[4];
 
-const updatePost = async (event) => {
-  event.preventDefault();
-  const title = document.querySelector('#title-post').value.trim();
-  const description = document.querySelector('#description-post').value.trim();
+// const updatePost = async (event) => {
+//   event.preventDefault();
+//   const title = document.querySelector('#title-post').value.trim();
+//   const description = document.querySelector('#description-post').value.trim();
 
-  if (title && description) {
-    const response = await fetch(`/dashboard/${user_id}/editpost/${post_id}`, {
-      method: 'PUT',
-      body: JSON.stringify({ title, description }),
-      headers: { 'Content-Type': 'application/json' },
-    });
+//   if (title && description) {
+//     const response = await fetch(`/dashboard/${user_id}/editpost/${post_id}`, {
+//       method: 'PUT',
+//       body: JSON.stringify({ title, description }),
+//       headers: { 'Content-Type': 'application/json' },
+//     });
 
-    if (response.ok) {
-      document.location.replace(`/dashboard/${user_id}`);
-    } else {
-      alert('Failed to update');
-    }
-  }
-};
+//     if (response.ok) {
+//       document.location.replace(`/dashboard/${user_id}`);
+//     } else {
+//       alert('Failed to update');
+//     }
+//   }
+// };
 
-const deletePost = async (event) => {
-  event.preventDefault();
-  const response = await fetch(`/dashboard/${user_id}/editpost/${post_id}`, {
-    method: 'DELETE',
-    headers: { 'Content-Type': 'application/json' },
-  });
+// const deletePost = async (event) => {
+//   event.preventDefault();
+//   const response = await fetch(`/dashboard/${user_id}/editpost/${post_id}`, {
+//     method: 'DELETE',
+//     headers: { 'Content-Type': 'application/json' },
+//   });
 
-  if (response.ok) {
-    document.location.replace(`/dashboard/${user_id}`);
-  } else {
-    alert('Failed to update');
-  }
-};
+//   if (response.ok) {
+//     document.location.replace(`/dashboard/${user_id}`);
+//   } else {
+//     alert('Failed to update');
+//   }
+// };
 
-document.querySelector('#post-update').addEventListener('click', updatePost);
+// document.querySelector('#post-update').addEventListener('click', updatePost);
 
-document.querySelector('#post-delete').addEventListener('click', deletePost);
+// document.querySelector('#post-delete').addEventListener('click', deletePost);
 
 
 
@@ -97,22 +97,3 @@ document.querySelector('#post-delete').addEventListener('click', deletePost);
 
 // document.querySelector('#post-update').addEventListener('click', updatePost);
 // document.querySelector('#post-delete').addEventListener('click', deletePost);
-app.get('/posts/:postId/edit', async (req, res) => {
-  try {
-    const post = await Post.findById(req.params.postId).lean()
-    res.render('edit-post', { post })
-  } catch (err) {
-    console.error(err)
-    res.render('error', { message: 'Error fetching post' })
-  }
-})
-
-app.put('/posts/:postId', async (req, res) => {
-  try {
-    const post = await Post.findByIdAndUpdate(req.params.postId, req.body, { new: true }).lean()
-    res.redirect(`/posts/${post._id}`)
-  } catch (err) {
-    console.error(err)
-    res.render('error', { message: 'Error updating post' })
-  }
-})

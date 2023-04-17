@@ -1,45 +1,71 @@
+<!-- Loop over each object in the blogs array -->
+{{#each blogs as |blog| }}
+<div class="row mb-4 blog">
+  <div class="col-md-5">
+    <h2>
+      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
+      {{{get_emoji}}}
+      <a href="/blog/{{blog.id}}">{{blog.name}}</a>
+    </h2>
+
+    <p>Created by {{user.username}} on {{format_date date_created}}</p>
+  </div>
+  <div class="col-md-7">
+    <p>
+      {{description}}
+    </p>
+  </div>
+</div>
+{{/each}}
+
+
+
 
 {{! This is the Handlebars template for the body of the homepage }}
-<div class="row justify-content-center">
-    <div class="col-11 mt-4">
-        <h1 class="shadow bg-secondary p-2 text-dark bg-opacity-10">Your Feed</h1>
-    </div>
-    <div class="col-12 col-md-11 col-xl-10 mt-3">
-        {{#each posts as |post| }}
-            {{> post-body post}}
-        {{/each}}
-    </div>
-</div>
+{{!-- <div class="row justify-content-center">
+  <div class="col-11 mt-4">
+    <h1 class="shadow bg-info p-2 text-dark bg-opacity-10">Your Feed</h1>
+  </div>
+  <div class="col-12 col-md-11 col-xl-10 mt-3">
+    {{#each posts as |post| }}
+    {{> post-body post}}
+    {{/each}}
+  </div>
+</div>  --}}
 
-{{!-- 
 
-<div class="row">
- <div class="col-auto">
+
+
+{{!-- <div class="row">
+  <div class="col-auto">
     <h2>Welcome, {{username}}!</h2>
   </div>
 </div>
 
+
 <div class="row mt-4">
   <div class="col-md-6">
     <h3>Create a New Post
-    <form class="form new-post-form">
-      <div class="form-group">
-        <label for="post-name">Post Title:</label>
-        <input class="form-input" type="text" id="postname" name="post-name" />
-      </div>
-      <div class="form-group">
-        <label for="post-desc">description:</label>
-        <textarea class="form-input" id="post-desc" name="post-desc"></textarea>
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create</button>
-      </div>
-    </form>
+      <form class="form new-post-form">
+        <div class="form-group">
+          <label for="post-name">Post Title:</label>
+          <input class="form-input" type="text" id="postname" name="post-name" />
+        </div>
+        <div class="form-group">
+          <label for="post-desc">description:</label>
+          <textarea class="form-input" id="post-desc" name="post-desc"></textarea>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+      </form>
   </div>
+
 
   {{#if posts.length}}
   <div class="col-md-6 project-list">
     <h3>Current Posts:</h3>
+
 
     {{#each post as |post|}}
     <div class="row mb-2">
@@ -55,10 +81,182 @@
   {{/if}}
 </div>
 
-<script src="/js/add-post.js"></script> --}}
+
+<script src="/js/add-post.js"></script>  --}}
+
 
 {{!-- <header class='constainer text-center'>
   <div class='row bg-dark text-white'>
+    <h1 class='h1 --bs-body-color col-4 p-2 mx-5 mb-4 bg-info-subtle text-dark rounded-3 header'>
+      The Ultimate Tech Blog!
+    </h1>
+  </div>
+</header>
+<main class='container container-fluid mt-5 rounded-top-5'>
+  {{#each blogposts}}
+  <div class='card bg-info-subtle m-3 rounded-4'>
+    <header class='card-header bg-dark text-white'>
+      <div class='row justify-content-between'>
+        <h2 class='h2 col-8 text-white'>
+          <a class="text-white'" href='/post/{{id}}'>{{title}}</a>
+        </h2>
+        <div class='align-self-center col-4 text-end m-0'>Post by:
+          {{user.username}}
+          on:
+          {{format_date date_created}}</div>
+      </div>
+    </header>
+    <div class='card-body'>
+      <div class='row align-center mb-3'>
+
+
+        <div class='col-md-12'>
+          <p class='fs-5'>{{description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</main> --}}
+
+
+<!-- Loop over each object in the projects array -->
+{{!-- {{#each posts as |post|}}
+<div class="row mb-4 post">
+  <div class="col-md-5">
+    <h2>
+      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
+      {{{get_emoji}}}
+      <a href="/post/{{post.id}}">{{post.name}}</a>
+    </h2>
+  </div>
+  <div class="col-md-7">
+    <p>
+      {{post.description}}
+    </p>
+  </div>
+</div>
+{{/each}} --}}
+
+
+{{!-- {{#each blogs as |blog|}}
+
+
+<div class="row">
+
+
+  <div class="container blogBox">
+    <div class="row justify-content-center headerRow">
+      <div class="col-8">
+        <h2>
+          <a class="blogTitle text-uppercase" href="/blog/{{blog.id}}">{{blog.title}}</a>
+        </h2>
+      </div>
+
+
+      <div class="col-4">
+        <p class="blogCreate text-right">Created by
+          {{blog.user.username}}
+          on
+          {{format_date blog.date_created}}
+        </p>
+      </div>
+    </div>
+    <div class="blogDesc">
+      <p class="text-center blogDescMain">
+        {{blog.description}}
+      </p>
+    </div>
+  </div>
+
+
+</div>
+
+
+{{/each}}
+
+
+
+
+
+
+
+
+{{! This is the Handlebars template for the body of the home page }}
+<div class="row justify-content-center">
+  <div class="col-11 mt-4">
+    <h1 class="shadow bg-secondary p-2 text-dark bg-opacity-10">Your Feed</h1>
+  </div>
+  <div class="col-12 col-md-11 col-xl-10 mt-3">
+    {{#each posts as |post| }}
+    {{> post-body post}}
+    {{/each}}
+  </div>
+</div> --}}
+
+
+{{!--
+
+
+<div class="row">
+  <div class="col-auto">
+    <h2>Welcome, {{username}}!</h2>
+  </div>
+</div>
+
+
+<div class="row mt-4">
+  <div class="col-md-6">
+    <h3>Create a New Post
+      <form class="form new-post-form">
+        <div class="form-group">
+          <label for="post-name">Post Title:</label>
+          <input class="form-input" type="text" id="postname" name="post-name" />
+        </div>
+        <div class="form-group">
+          <label for="post-desc">description:</label>
+          <textarea class="form-input" id="post-desc" name="post-desc"></textarea>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+      </form>
+  </div>
+
+
+  {{#if posts.length}}
+  <div class="col-md-6 project-list">
+    <h3>Current Posts:</h3>
+
+
+    {{#each post as |post|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/post/{{post.id}}">{{post.name}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>
+
+
+<script src="/js/add-post.js"></script> --}}
+
+
+
+
+
+
+
+
+
+{{!-- 
+<header class='constainer text-center'>
+  <div class='row bg-info text-white'>
     <h1
       class='h1 --bs-body-color col-4 p-2 mx-5 mb-4 bg-info-subtle text-dark rounded-3 header'
     >
@@ -67,16 +265,16 @@
   </div>
 </header>
 <main class='container container-fluid mt-5 rounded-top-5'>
-  {{#each blogposts}}
+  {{#each blogs}}
     <div class='card bg-info-subtle m-3 rounded-4'>
-      <header class='card-header bg-dark text-white'>
+      <header class='card-header bg-info text-white'>
         <div class='row justify-content-between'>
           <h2 class='h2 col-8 text-white'>
             <a class="text-white'" href='/post/{{id}}'>{{title}}</a>
           </h2>
-          <div class='align-self-center col-4 text-end m-0'>Post by:
+          <div class='align-self-center col-4 text-end m-0'>Posted by
             {{user.username}}
-            on:
+            on
             {{format_date date_created}}</div>
         </div>
       </header>
@@ -90,125 +288,6 @@
       </div>
     </div>
   {{/each}}
-</main> --}}
+</main>
 
-
-<!-- Loop over each object in the projects array -->
-{{!-- {{#each posts as |post|}}
-  <div class="row mb-4 post">
-    <div class="col-md-5">
-      <h2>
-        <!-- Call helper function with triple brackets to render the emoji span as HTML -->
-        {{{get_emoji}}}
-        <a href="/post/{{post.id}}">{{post.name}}</a>
-      </h2>
-    </div>
-    <div class="col-md-7">
-      <p>
-        {{post.description}}
-      </p>
-    </div>
-  </div>
-{{/each}} --}}
-
-
-
-
-
-
-
-
-{{!-- {{#each blogs as |blog|}}
-
-  <div class="row">
-
-    <div class="container blogBox">
-      <div class="row justify-content-center headerRow">
-        <div class="col-8">
-          <h2>
-            <a
-              class="blogTitle text-uppercase"
-              href="/blog/{{blog.id}}"
-            >{{blog.title}}</a>
-          </h2>
-        </div>
-
-        <div class="col-4">
-          <p class="blogCreate text-right">Created by
-            {{blog.user.username}}
-            on
-            {{format_date blog.date_created}}
-          </p>
-        </div>
-      </div>
-      <div class="blogDesc">
-        <p class="text-center blogDescMain">
-          {{blog.description}}
-        </p>
-      </div>
-    </div>
-
-  </div>
-
-{{/each}}
-
-
-
-
-{{! This is the Handlebars template for the body of the home page }}
-<div class="row justify-content-center">
-    <div class="col-11 mt-4">
-        <h1 class="shadow bg-secondary p-2 text-dark bg-opacity-10">Your Feed</h1>
-    </div>
-    <div class="col-12 col-md-11 col-xl-10 mt-3">
-        {{#each posts as |post| }}
-            {{> post-body post}}
-        {{/each}}
-    </div>
-</div> --}}
-
-{{!-- 
-
-<div class="row">
- <div class="col-auto">
-    <h2>Welcome, {{username}}!</h2>
-  </div>
-</div>
-
-<div class="row mt-4">
-  <div class="col-md-6">
-    <h3>Create a New Post
-    <form class="form new-post-form">
-      <div class="form-group">
-        <label for="post-name">Post Title:</label>
-        <input class="form-input" type="text" id="postname" name="post-name" />
-      </div>
-      <div class="form-group">
-        <label for="post-desc">description:</label>
-        <textarea class="form-input" id="post-desc" name="post-desc"></textarea>
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create</button>
-      </div>
-    </form>
-  </div>
-
-  {{#if posts.length}}
-  <div class="col-md-6 project-list">
-    <h3>Current Posts:</h3>
-
-    {{#each post as |post|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/post/{{post.id}}">{{post.name}}</a></h4>
-      </div>
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
-      </div>
-    </div>
-    {{/each}}
-  </div>
-  {{/if}}
-</div>
-
-<script src="/js/add-post.js"></script> --}}
+<script src ="/js/homepage.js"></script> --}}

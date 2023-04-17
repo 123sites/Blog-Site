@@ -56,15 +56,36 @@ nav-text {
   font-style: bold;
 }
 
-.btn button {
+/* .btn button {
   display: flex !important;
   padding: 3px;
   margin: 5px;
   justify-content:space-around;
   align-items: center !important;
   background-color: rgb(126, 237, 126);
+} */
+
+
+.button {
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #04AA6D;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
 }
 
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
 .userPrompt {
   display: flex;
   margin: 5px 10px 5px 10px;
