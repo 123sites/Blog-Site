@@ -7,7 +7,7 @@
 
 body {
   height: 100vh;
-  background-color: rgb(233, 221, 203)
+  background-color: #a1e3f7;
 }
 
 header,
@@ -17,17 +17,37 @@ h1 {
   color: whitesmoke !important;
 }
 
-header a {
+h2 {
+  color:#F72585;
+  font-weight: bold;
+}
+/* header a {
   margin: 10px;
   padding: 5px;
   color: whitesmoke !important;
+} */
+
+span {
+  color:#B5179E;
+  font-size: 30px;
+  font-weight: bold;
+  justify-content: center;
 }
 
 h3 {
-  font-weight: bold
+  font-weight: bold;
 }
 
-.card-title {
+a {
+  color:#B5179E!important;
+  font-weight: bold!important;
+  font-size: 25px;
+}
+
+.welcome {
+  display: flex;
+}
+/* .card-title {
   display: flex;
   justify-content: center;
   background-color: rgb(32, 33, 34);
@@ -35,26 +55,26 @@ h3 {
   padding: 5px;
 }
 
-.car-body,
+.card-body,
 .card {
   background-color: rgb(222, 182, 130)
-}
+} */
 
-.card h5,
+/* .card h5,
 .card p,
 nav-text {
-  color: rgb(6, 7, 8);
-  font-style: normal;
-}
-
+  color: rgb(6, 7, 8); */
+  /* font-style: normal; */
+/* } */
+/* 
 .form-text {
   margin-top: 0.25rem;
   font-size: 15px;
   color: rgb(0, 26, 69);
   justify-content: center;
   display: flex;
-  font-style: bold;
-}
+  font-style: bold; */
+/* } */
 
 /* .btn button {
   display: flex !important;
@@ -67,32 +87,56 @@ nav-text {
 
 
 .button {
+  display: inline-flex;
   padding: 15px 25px;
-  font-size: 24px;
+  font-size: 18px;
   text-align: center;
   cursor: pointer;
   outline: none;
-  color: #fff;
-  background-color: #04AA6D;
+  font-weight: bold!important;
+  color: whitesmoke!important;
+  background-color: #7209B7!important;
   border: none;
   border-radius: 15px;
-  box-shadow: 0 9px #999;
+  box-shadow: 0 5px #560BAD;
 }
 
-.button:hover {background-color: #3e8e41}
+.button:hover {background-color: #3F37C9!important}
 
 .button:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px #666;
+  background-color: #7209B7!important;
+  box-shadow: 0 5px #560BAD!important;
   transform: translateY(4px);
 }
-.userPrompt {
+
+.delete:hover {background-color: #480CA8}
+
+.delete:active {
+  background-color: #B5179E;
+  box-shadow: 0 5px #560BAD;
+  transform: translateY(4px);
+}
+.delete.userPrompt {
   display: flex;
   margin: 5px 10px 5px 10px;
   justify-content: space-evenly;
 }
 
-.content,
+.delete {
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: whitesmoke!important;
+  font-weight: bold!important;
+  background-color: #F72585;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #7209B7;
+}
+
+/* .content,
 .edited-content {
   margin-left: 7vw;
   margin-right: 7vw;
@@ -109,4 +153,4 @@ nav-text {
 .title,
 .edited-title {
   width: 75vw;
-}
+} */

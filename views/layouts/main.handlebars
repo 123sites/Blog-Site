@@ -31,45 +31,48 @@
     <link rel="stylesheet" href="/css/style.css" />
   </head>
 
-  <body class="bg-info-subtle">
-    <nav class="navbar sticky-top navbar-expand-lg navbar-sm">
+  <body>
+    <nav class="navbar sticky-top navbar-dark bg-dark navbar-expand-lg navbar-sm">
       <div class="container-fluid flex-column flex-md-row">
         <div class="col-md-1">
           <div class="d-flex align-items-center">
-            <a class="navbar-brand" href="#">
+            {{!-- nava free responsive Bootstrap template. --}}
+            <a class="navbar-brand brand d-none d-md-block col-3 ml-auto nava" href="#">
               <img
                 src="/images/hello.jpg"
                 alt="Logo is a neon sign that says hello."
-                width="30"
-                height="24"
-                class="d-inline-block align-text-top"
+                width="130"
+                height="94"
+                class="d-inline-flex align-text-center me-3"
               />
+    
+              <span class="d-inline-block text-truncate">
               The Ultimate Tech Blog!
+              </span>
             </a>
           </div>
         </div>
         <div
           class="navbar col-md-7 justify-content-end align-items-center"
-          id="navbarNav"
         >
-          <ul class="navbar-nav flex-column flex-md-row m-3">
+          <ul class="navbar-nav flex-column flex-md-row m-3 font-weight-bold">
             <li class="nav-item m-1">
-              <a class="nava nav-link maina" href="/">Home</a>
+              <a id="home" class="nava nav-link maina" href="/">Home</a>
             </li>
             {{! Show login or logout links }}
             {{#if loggedIn}}
               <li class="nav-item m-1">
                 <a
-                  class="nava nav-link"
+                  class="nava nav-link font-weight-bold"
                   href="/dashboard/{{user_id}}"
                 >Dashboard</a>
               </li>
-              <li class="nav-item m-1">
+              <li class="nav-item m-1 justify-content-center">
                 <button id="logout" class="nava nav-link">Logout</button>
               </li>
             {{/if}}
             {{#unless loggedIn}}
-              <li class="nav-item m-1">
+              <li class="nav-item m-1 justify-content-center">
                 <a class="nava nav-link" href="/login">Login</a>
               </li>
             {{/unless}}
