@@ -13,6 +13,7 @@ router.get('/:user_id', async (req, res) => {
     );
     const loggedIn = req.session.loggedIn;
     const user_id = req.session.user_id;
+    // const username = req.session.username;
 
     res.status(200).render('dashboard', { blogposts, loggedIn, user_id });
   } catch (err) {

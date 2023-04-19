@@ -18,7 +18,7 @@ const { User } = require("../../models");
 router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({ 
-			where: { username: req.body.username } 
+			where: { username: req.body.username }
 		});
 
     if (!userData) {
@@ -36,6 +36,7 @@ router.post('/login', async (req, res) => {
         .status(400)
         .json({ message: 'Sorry, this is not the correct username or password.  Please try again.' });
       return;
+
     }
 
     req.session.save(() => {

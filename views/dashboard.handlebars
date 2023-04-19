@@ -16,7 +16,7 @@
       </div>
     </header> --}}
     <div class='card-body'>
-      <div class='row align-center mb-2'>
+      <div class='row align-center'>
 
         <div class='col-md-12'>
           <p class='fs-5'>{{blog.description}}</p>
@@ -27,14 +27,14 @@
 
     <div id='add-post'>
       <form class='form post-form'>
-        <div class='input-group mb-3'>
+        <div class='input-group'>
           <span class='input-group-text'>Title</span>
           <input id='title-post' type='text' class='form-control' placeholder='Insert title here' aria-label='Title' />
         </div>
 
         <div id='comment-container'>
           {{#each blog.comments}}
-          <div class='card m-3 rounded-3'>
+          <div class='card rounded-3'>
             <div class='card-body'>
               <div class='row align-center'>
                 <div class='col-md-12'>
@@ -62,28 +62,29 @@
 
         <!-- If logged-in, can leave comments. -->
         {{#if loggedIn}}
-        <div class='container m-3' id='add-comment-btn'>
-          <div class='row d-flex justify-content-center align-items-center'>
-            <div class='col-12 col-sm-6'>
+        {{!-- <div class='container m-3' id='add-comment-btn'> --}}
+          {{!-- <div class='row d-flex justify-content-center align-items-center'> --}}
+            {{!-- <div class='col-12 col-sm-6'>
               <button class='btn button btn-info custom-btn w-110' type='button' id='add-comment'>+ Add Comment:
               </button>
-            </div>
-          </div>
-        </div>
+            </div> --}}
+            {{!-- </div>
+        </div> --}}
         {{/if}}
 
         <div id='new-comment'>
           <div class='card bg-info-subtle m-3 rounded-3'>
             {{!-- <div class='card-body'> --}}
               <div id='view-post'>
-                <form class='form add-comment-form'>
-                  <div class='input-group'>
+                <form class='add-comment-form'>
+                  {{!-- <div> --}}
                     <div class='input-group'>
                       <span class='input-group-text'>Description: </span>
                       <textarea id='comment-description' class='form-control' aria-label='With textarea'
                         placeholder='Type Here'></textarea>
                     </div>
-                  </div>
+                    {{!--
+                  </div> --}}
                   <div class='row justify-content-center align-items-center'>
                     <div class='col-2 text-center'>
                       <button class='btn button custom-btn' type='submit' id='submit-comment'>Submit</button>
@@ -99,10 +100,13 @@
             </div> --}}
           </div>
         </div>
-    </div>
+
 </main>
 
 <script src='/js/dashboard.js'></script>
+
+
+
 
 
 
@@ -110,51 +114,56 @@
   <div class="col-3">
     <h2 class="welcome">Welcome, {{username}}!</h2>
   </div>
-</div>
-<main class='container container-fluid mt-7 mb-0'>
-  <div id='blog'>
-    {{! blog post go onto the webpage }}
-    {{#each blogs}}
-    <div class='card m-3 rounded-3'>
-      <div class='card-body'>
-        <div class='row align-center'>
-          <div class='h3 col-5 text-start'><a class='text-white'
-              href='/dashboard/{{user_id}}/edit-post/{{id}}'>{{title}}</a>
+
+  {{!-- <div class="row">
+    <div class="col-3">
+      <h2 class="welcome">Welcome, {{username}}!</h2>
+    </div>
+  </div>
+  <main class='container container-fluid mt-7 mb-0'>
+    <div id='blog'>
+      {{! blog post go onto the webpage }}
+      {{#each blogs}}
+      <div class='card m-3 rounded-3'>
+        <div class='card-body'>
+          <div class='row align-center'>
+            <div class='h3 col-5 text-start'><a class='text-white'
+                href='/dashboard/{{user_id}}/edit-post/{{id}}'>{{title}}</a>
+            </div>
+            <div class='col-7 text-end'>Posted on:
+              {{format_date date_created}}</div>
           </div>
-          <div class='col-7 text-end'>Posted on:
-            {{format_date date_created}}</div>
         </div>
       </div>
+      {{/each}}
     </div>
-    {{/each}}
-  </div>
 
-  <div id='add-post'>
-    <form class='form post-form'>
-      <div class='input-group mb-3'>
-        <span class='input-group-text'>Title:</span>
-        <input id='blog-title' type='text' class='form-control' placeholder='Insert title here' aria-label='Title' />
-      </div>
-      <div class='input-group'>
+    <div id='add-post'>
+      <form class='form post-form'>
+        <div class='input-group mb-3'>
+          <span class='input-group-text'>Title:</span>
+          <input id='blog-title' type='text' class='form-control' placeholder='Insert title here' aria-label='Title' />
+        </div>
         <div class='input-group'>
-          <span class='input-group-text'>Description:</span>
-          <textarea id='blog-description' class='form-control' aria-label='With textarea'></textarea>
+          <div class='input-group'>
+            <span class='input-group-text'>Description:</span>
+            <textarea id='blog-description' class='form-control' aria-label='With textarea'></textarea>
+          </div>
         </div>
-      </div>
-      <div class='row justify-content-center align-items-center'>
-        <div class='form-group col-2 my-3 text-center'>
-          <button class='btn button custom-btn' type='submit' id='submit-post'>Add Post</button>
+        <div class='row justify-content-center align-items-center'>
+          <div class='form-group col-2 my-3 text-center'>
+            <button class='btn button custom-btn' type='submit' id='submit-post'>Add Post</button>
+          </div>
         </div>
-      </div>
-    </form>
-  </div>
+      </form>
+    </div>
 
-  <div class='container m-3'>
-    <div class='row justify-content-center align-items-center'>
-      <div class='col-3 col-sm-1 w-50'>
-        <button class='btn delete custom-btn' type='button' id='add-post'>Delete</button>
+    <div class='container m-3'>
+      <div class='row justify-content-center align-items-center'>
+        <div class='col-3 col-sm-1 w-50'>
+          <button class='btn delete custom-btn' type='button' id='add-post'>Delete</button>
+        </div>
       </div>
     </div>
-  </div>
-</main>
-<script src='/js/dashboard.js'></script> --}}
+  </main>
+  <script src='/js/dashboard.js'></script> --}}

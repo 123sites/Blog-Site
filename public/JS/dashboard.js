@@ -21,6 +21,7 @@ const postFormHandler = async (event) => {
       method: "POST",
       body: JSON.stringify({ title, description }),
       headers: { "Content-Type": "application/json" },
+      
     });
 
     if (response.ok) {
@@ -30,6 +31,7 @@ const postFormHandler = async (event) => {
     }
   }
 };
+
 // document.querySelector("#add-post").style.display = "block";
 // document.querySelector("#blog").style.display = "block";
 // document.querySelector("#add-post-container").style.display = "none";
