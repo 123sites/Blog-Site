@@ -18,8 +18,10 @@ h1 {
 }
 
 h2 {
+  display: flex;
   color:#F72585;
   font-weight: bold;
+  font-size: 35px;
 }
 /* header a {
   margin: 10px;
@@ -29,24 +31,72 @@ h2 {
 
 span {
   color:#B5179E;
-  font-size: 30px;
+  font-size: 40px;
   font-weight: bold;
   justify-content: center;
 }
 
 h3 {
+  color:#F72585;
   font-weight: bold;
+  font-size: 30px;
+  margin-left: 10px;
 }
 
-a {
+
+.welcome {
+  color:#F72585;
+  font-weight: bold;
+  font-size: 45px;
+  margin-left: 10px;
+  padding: 10px;
+}
+
+label {
+  color:#F72585;
+  font-weight: bold;
+  font-size: 25px;
+  margin-left: 10px;
+}
+
+#blog-description {
+  color:#F72585;
+  font-weight: bold;
+  margin-left: 15px;
+}
+
+.blog-title {
+  cursor: pointer;
+  
+}
+
+.blogpost-dashboard {
+  cursor: pointer;
+}
+
+#blog-description {
+  font-size: 37.25px;
+}
+
+#newComment {
+  display: none;
+}
+
+input {
+  font-size: 33px;
+}
+
+a, #logout{
   color:#B5179E!important;
   font-weight: bold!important;
   font-size: 25px;
 }
 
-.welcome {
+/* .welcome {
   display: flex;
-}
+  align-items: center!important;
+} */
+
 /* .card-title {
   display: flex;
   justify-content: center;
@@ -98,7 +148,7 @@ nav-text {
   background-color: #7209B7!important;
   border: none;
   border-radius: 15px;
-  box-shadow: 0 5px #560BAD;
+  box-shadow: 0 7px #560BAD;
 }
 
 .button:hover {background-color: #3F37C9!important}
@@ -124,7 +174,7 @@ nav-text {
 
 .delete {
   padding: 15px 25px;
-  font-size: 24px;
+  font-size: 18px;
   text-align: center;
   cursor: pointer;
   outline: none;
@@ -135,6 +185,32 @@ nav-text {
   border-radius: 15px;
   box-shadow: 0 9px #7209B7;
 }
+
+.signup {
+  background-color: #f0e6ef!important;
+}
+
+#addBlog {
+  display: none;
+}
+
+#blog {
+  /* display: block; */
+  font-size: 20px;
+  justify-content: space-around!important;
+}
+
+.fs-responsive {
+  font-size: 1rem;
+}
+
+
+/* 
+#deleteBlog {
+  display: none
+} */
+
+
 
 /* .content,
 .edited-content {
@@ -149,8 +225,3 @@ nav-text {
   margin-right: 30vw;
   margin-top: 20px;
 }
-
-.title,
-.edited-title {
-  width: 75vw;
-} */

@@ -1,44 +1,40 @@
 <main>
   <div class="container-fluid">
-    <div class="row mt-4 p-5 justify-content-center welcome m-5 me-3">
+    <div class="row mt-2 p-3 justify-content-center me-3">
 
-      <h2>Welcome to The Ultimate Tech Blog!</h2>
+      <h2 class="welcome container-fluid justify-content-center m-1 text-center fw-bold">Welcome to the Ultimate Tech
+        Blog!</h2>
     </div>
 
-    <div id="blog" class="container container-fluid">
+    <div id="blog col-7" class="container-fluid d-block">
       <div class="row row-cols-1 row-cols-md-3">
         {{#each blogs as |blog|}}
         <div class="col mb-4">
           <div class="card p-3 rounded-4 shadow-lg mx-2">
-            <header class="card-header bg-secondary text-white">
-              <h2 class="h2 mb-1 ms-1 row mb-4 blog">
-                {{!-- <div class="col-md-5"> }} --}}
+            <header class="card-header bg-secondary m-0 p-1 text-white">
+              <h2 class="h2 mb-1 ms-1 row mb-4">
+                <div class="col-md-5">
 
                   <!-- Call helper function with triple brackets to render the emoji span as HTML -->
                   {{{get_emoji}}}
                   <a href="/blog/{{blog.id}}">{{blog.name}}</a>
+                </div>
               </h2>
             </header>
-            <div class="card-body bg-white py-0">
-              <div class="card-text mt-3 text-md-end pe-2 lh-sm fs-responsive">
+            <div class="card-body bg-white py-0 shadow-lg">
+              <div class="card-text mt-3 pe-2 lh-sm text-center fs-responsive">
                 <p>Created by
                   {{user.username}}
                   on
                   {{format_date date_created}}</p>
               </div>
-              <div class="col-md-7">
+              <div class="col-md-12 fw-bold">
                 <p>
                   {{description}}
                 </p>
               </div>
             </div>
           </div>
-          {{/each}}
         </div>
-      </div>
-    </div>
-  </div>
+        {{/each}}
 </main>
-
-
-

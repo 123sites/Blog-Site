@@ -1,3 +1,9 @@
+
+
+
+
+
+
 const addPostHandler = () => {
   document.querySelector("#add-post").style.display = "none";
   document.querySelector("#blog").style.display = "none";
@@ -6,6 +12,7 @@ const addPostHandler = () => {
 
 const postFormHandler = async (event) => {
   event.preventDefault();
+  // Or newComment or blogData??????
   const title = document.querySelector("#blog-title").value.trim();
   const description = document.querySelector("#blog-description").value.trim();
 

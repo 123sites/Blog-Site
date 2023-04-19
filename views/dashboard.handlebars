@@ -1,129 +1,193 @@
 <div class="row">
-  <div class="col-auto">
-    <h2>Welcome, {{username}}!</h2>
+  <div class="col-3">
+    <h2 class="welcome">Welcome, {{username}}!</h2>
   </div>
 </div>
 
-<div class="row mt-4">
-  <div class="col-md-6">
-    <h3>Create a New Blog:</h3>
-
-    <form class="form new-blog-form">
-      <div class="form-group">
-        <label for="blog-title">Blog Title:</label>
-        <input class="form-input" type="text" id="blog-title" name="blog-title" />
+<main class='container container-fluid mt-5'>
+  <div class='card bg-info-subtle m-3 rounded-4 border-dark border-4'>
+    <header class='card-header bg-dark text-white'>
+      <div class='row justify-content-between'>
+        <h2 class='h2 col-9 text-white text-start'>{{blog.title}}</h2>
+        <div class='align-self-center col-3 text-end m-0'>Posted by:
+          {{blog.user.username}}
+          on
+          {{blog.date_created}}</div>
       </div>
-      <div class="form-group">
-        <label for="blog-desc">description:</label>
-        <textarea class="form-input" id="blog-description" name="blog-description"></textarea>
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn button btn-primary">Create</button>
-      </div>
-    </form>
-  </div>
+    </header>
+    <div class='card-body'>
+      <div class='row align-center mb-2'>
 
-  {{#if blogs.length}}
-  <div class="col-md-6 blog-list">
-    <h3>Current Blogs:</h3>
-
-    {{#each blogs as |blog|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/blog/{{blog.id}}">{{blog.title}}</a></h4>
-      </div>
-      <div class="col-md-4">
-        <button class="btn delete" data-id="{{blog.id}}">DELETE</button>
-      </div>
-    </div>
-    {{/each}}
-  </div>
-  {{/if}}
-</div>
-
-<script src="/js/dashboard.js"></script>
-
-
-{{!-- <main>
-  <div>
-    <div>
-      <div class="container-fluid">
-        <div class="row mt-4 p-5 justify-content-center">
-
-          <h2 class="title-description">Your Dashboard</h2>
-          <p
-            class="description --bs-info-text-emphasis fs-3"
-            style="line-height: 1.5"
-          >Add blog here:</p>
+        <div class='col-md-12'>
+          <p class='fs-5'>{{blog.description}}</p>
         </div>
       </div>
     </div>
-    <div id="blog-post-container" class="container container-fluid">
-      <div class="row row-cols-1 row-cols-md-3 g-0 mx-0">
-        {{#each blogs}}
-          <div class="card bg-dark m-3 rounded-3 --bs-info-text-emphasis">
-            <div class="card-body">
-              <div class="row align-center">
-                <div class="h3 col-5 text-start"><a
-                    class="text-white"
-                    href="/dashboard/{{user_id}}/edit-post/{{id}}"
-                  >{{title}}</a>
-                </div>
-                <div class="col-7 text-end">Posted on:
-                  {{format_date date_created}}</div>
-              </div>
+  </div>
+
+  <div id='comment-container'>
+    {{#each blog.comments}}
+      <div class='card m-3 rounded-3'>
+        <div class='card-body'>
+          <div class='row align-center'>
+            <div class='col-md-12'>
+              <p class='fs-5'>{{description}}</p>
             </div>
           </div>
-        {{/each}}
+        </div>
+        <div class='card-footer'>
+          <div class='row justify-content-between  align-items-center'>
+            <p class='text-muted col-5'>Comment by:
+            {{user.username}}
+            on
+            {{format_date date_created}}</p>
+            <!-- Show delete button if it's the user. -->
+            {{#if (isCommentOwner user.id ../user_id)}}
+              <div class='col-2 my-0 text-center'>
+                <button
+                  class='btn custom-btn'
+                  type='button'
+                  id='delete-comment'
+                  data-delete="{{id}}"
+                >Delete</button>
+              </div>
+            {{/if}}
+          </div>
+        </div>
       </div>
-    </div>
+    {{/each}}
   </div>
 
-  <div id="add-post-container">
-    <form class="form post-form">
-      <div class="input-group mb-3">
-        <span class="input-group-text">Title:</span>
-        <input
-          id="post-title"
-          type="text"
-          class="form-control"
-          placeholder="Insert title here"
-          aria-label="Title"
-        />
-      </div>
-      <div class="input-group">
-        <div class="input-group">
-          <span class="input-group-text">Description:</span>
-          <textarea
-            id="post-description"
-            class="form-control"
-            aria-label="With textarea"
-          ></textarea>
+  <!-- If logged-in, can leave comments. -->
+  {{#if loggedIn}}
+    <div class='container m-3' id='add-comment-btn'>
+      <div class='row d-flex justify-content-center align-items-center'>
+        <div class='col-12 col-sm-6'>
+          <button
+            class='btn button btn-info custom-btn w-110'
+            type='button'
+            id='add-comment'
+          >+ Add Comment: </button>
         </div>
       </div>
+    </div>
+  {{/if}}
 
-      <div class="row justify-content-center align-items-center">
-        <div class="form-group col-2 my-3 text-center">
-          <button
-            class="btn button btn-info custom-btn"
-            type="submit"
-            id="submit-post"
-          >Submit</button>
+  <div id='new-comment'>
+    <div class='card bg-info-subtle m-3 rounded-3'>
+      {{!-- <div class='card-body'> --}}
+        <div id='view-post'>
+          <form class='form add-comment-form'>
+            <div class='input-group'>
+              <div class='input-group'>
+                <span class='input-group-text'>Description: </span>
+                <textarea
+                  id='comment-description'
+                  class='form-control'
+                  aria-label='With textarea'
+                  placeholder='Type Here'
+                ></textarea>
+              </div>
+            </div>
+            <div class='row justify-content-center align-items-center'>
+              <div class='col-2 text-center'>
+                <button
+                  class='btn button custom-btn'
+                  type='submit'
+                  id='submit-comment'
+                >Submit</button>
+              </div>
+              <div class='col-2 my-3 text-center'>
+                <button
+                  class='btn button custom-btn'
+                  type='button'
+                  id='cancel-comment'
+                >Cancel</button>
+              </div>
+            </div>
+          </form>
         </div>
-      </div>
-    </form>
-    <div class="container m-3">
-      <div class="row d-flex justify-content-center align-items-center">
-        <div class="col-12 col-sm-6">
-          <button
-            class="btn button btn-info custom-btn w-110"
-            type="button"
-            id="add-post"
-          >+ Add Post</button>
-        </div>
-      </div>
+
+      {{!-- </div> --}}
     </div>
   </div>
 
 </main>
-<script src="/js/dashboard.js"></script> --}}
+
+<script src='/js/dashboard.js'></script>
+
+
+
+{{!-- <div class="row">
+  <div class="col-3">
+    <h2 class="welcome">Welcome, {{username}}!</h2>
+  </div>
+</div>
+<main class='container container-fluid mt-7 mb-0'>
+  <div id='blog'>
+    {{! blog post go onto the webpage }}
+    {{#each blogs}}
+      <div class='card m-3 rounded-3'>
+        <div class='card-body'>
+          <div class='row align-center'>
+            <div class='h3 col-5 text-start'><a
+                class='text-white'
+                href='/dashboard/{{user_id}}/edit-post/{{id}}'
+              >{{title}}</a>
+            </div>
+            <div class='col-7 text-end'>Posted on:
+              {{format_date date_created}}</div>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+
+  <div id='add-post'>
+    <form class='form post-form'>
+      <div class='input-group mb-3'>
+        <span class='input-group-text'>Title:</span>
+        <input
+          id='blog-title'
+          type='text'
+          class='form-control'
+          placeholder='Insert title here'
+          aria-label='Title'
+        />
+      </div>
+      <div class='input-group'>
+        <div class='input-group'>
+          <span class='input-group-text'>Description:</span>
+          <textarea
+            id='blog-description'
+            class='form-control'
+            aria-label='With textarea'
+          ></textarea>
+        </div>
+      </div>
+      <div class='row justify-content-center align-items-center'>
+        <div class='form-group col-2 my-3 text-center'>
+          <button
+            class='btn button custom-btn'
+            type='submit'
+            id='submit-post'
+          >Add Post</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class='container m-3'>
+    <div class='row justify-content-center align-items-center'>
+      <div class='col-3 col-sm-1 w-50'>
+        <button
+          class='btn delete custom-btn'
+          type='button'
+          id='add-post'
+        >Delete</button>
+      </div>
+    </div>
+  </div>
+</main>
+<script src='/js/dashboard.js'></script> --}}
+

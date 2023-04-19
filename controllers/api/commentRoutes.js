@@ -14,22 +14,10 @@
 // When idle on the site for more than a set time, I'm able to view comments but I am prompted to log in again 
 // before I can add, update, or delete comments.
 
-
-// const router = require('express').Router();
-// const { Comment } = require('../../models');
-
-// router.get('/:id', async (req, res) => {});
-
-// module.exports = router;
-
-
-
-
 const router = require('express').Router();
 
 const { Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
-
 
 router.get('/', (req,res) => {
   Comment.findAll({})

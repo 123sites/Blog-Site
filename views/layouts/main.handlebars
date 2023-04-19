@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Ultimate Tech Blog!</title>
+    <title>Ultimate Tech Blog!</title>
     {{! Favicon image }}
     <link
       rel="icon"
@@ -35,7 +35,7 @@
     <nav class="navbar sticky-top navbar-dark bg-dark navbar-expand-lg navbar-sm">
       <div class="container-fluid flex-column flex-md-row">
         <div class="col-md-1">
-          <div class="d-flex align-items-center">
+          <div class="align-items-center">
             {{!-- nava free responsive Bootstrap template. --}}
             <a class="navbar-brand brand d-none d-md-block col-3 ml-auto nava" href="#">
               <img
@@ -46,8 +46,8 @@
                 class="d-inline-flex align-text-center me-3"
               />
     
-              <span class="d-inline-block text-truncate">
-              The Ultimate Tech Blog!
+              <span class="d-inline-flex text-truncate">
+              Ultimate Tech Blog!
               </span>
             </a>
           </div>
@@ -68,7 +68,7 @@
                 >Dashboard</a>
               </li>
               <li class="nav-item m-1 justify-content-center">
-                <button id="logout" class="nava nav-link">Logout</button>
+                <div id="logout" class="nava nav-link">Logout</div>
               </li>
             {{/if}}
             {{#unless loggedIn}}

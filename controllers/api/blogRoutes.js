@@ -16,33 +16,6 @@ const router = require('express').Router();
 const { Blog } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// router.get('/:id', async (req, res) => {
-//   try {
-//     const userData = await Blog.findOne({
-//       where: { id: req.params.id },
-//     });
-
-//     if (!userData) {
-//       res
-//         .status(400)
-//         .json({ message: 'The email or password is not correct, please try again' });
-//       return;
-//     }
-
-//     req.session.save(() => {
-//       req.session.user_id = userData.id;
-//       req.session.loggedIn = true;
-
-//       res.json(userData);
-//     });
-//   } catch (err) {
-//     res.status(400).json(err);
-//   }
-// });
-
-// module.exports = router;
-
-
 router.post('/', withAuth, async (req, res) => {
   try {
     const newBlog = await Blog.create({
