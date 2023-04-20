@@ -11,11 +11,16 @@ router.get('/:user_id', async (req, res) => {
     const blogposts = blogPostInfo.map((blogpost) =>
       blogpost.get({ plain: true })
     );
+    console.log(blogposts)
+    const userData = await User.findByPk(req.params.user_id, {
+      include: [Blog]
+    })
+    const user = userData.get({ plain: true })
+    console.log(user);
     const loggedIn = req.session.loggedIn;
     const user_id = req.session.user_id;
-    // const username = req.session.username;
 
-    res.status(200).render('dashboard', { blogposts, loggedIn, user_id });
+    res.status(200).render('dashboard', { user, loggedIn, user_id });
   } catch (err) {
     res.status(400).json(err);
   }
@@ -33,7 +38,7 @@ router.get('/:user_id/edit-post/:id', async (req, res) => {
     const loggedIn = req.session.loggedIn;
     const user_id = req.session.user_id;
 
-    res.status(200).render('editpost', { blogpost, loggedIn, user_id });
+    res.status(200).render('edit-post', { blogpost, loggedIn, user_id });
   } catch (err) {
     res.status(400).json(err);
   }
@@ -49,7 +54,7 @@ router.put('/:user_id/edit-post/:id', async (req, res) => {
     });
 
     if (!blogPostInfo) {
-      res.status(404).json({ message: 'No blogpost found with this id!' });
+      res.status(404).json({ message: 'No blog post found with this id!' });
       return;
     }
 
@@ -58,5 +63,7 @@ router.put('/:user_id/edit-post/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+
 
 module.exports = router;

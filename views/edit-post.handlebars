@@ -1,4 +1,4 @@
-  <!-- If logged-in, can leave comments. -->
+  {{!-- <!-- If logged-in, can leave comments. -->
   {{#if loggedIn}}
     <div class='container m-3' id='add-comment-btn'>
       <div class='row d-flex justify-content-center align-items-center'>
@@ -14,14 +14,36 @@
   {{/if}}
 
   <div id='new-comment'>
-    <div class='card bg-info-subtle m-3 rounded-3'>
+    <div class='card m-3 rounded-3'>
       {{!-- <div class='card-body'> --}}
         <div id='view-post'>
           <form class='form add-comment-form'>
             <div class='input-group'>
               <div class='input-group'>
                 <span class='input-group-text'>Description: </span>
-                <textarea
+                        <textarea
+            id='post-description'
+            class='form-control'
+            aria-label='With textarea'
+          >{{blog.description}}</textarea>
+        </div>
+      </div>
+      <div class='row justify-content-center align-items-center'>
+        <div class='form-group col-2 my-3 text-center'>
+          <button
+            class='btn button custom-btn'
+            type='submit'
+            id='post-update'
+          >Update</button>
+        </div>
+        <div class='form-group col-2 my-3 text-center'>
+          <button
+            class='btn button custom-btn'
+            type='button'
+            id='delete-post'
+          >Delete</button>
+        </div>
+                {{!-- <textarea
                   id='comment-description'
                   class='form-control'
                   aria-label='With textarea'
@@ -39,11 +61,11 @@
               </div>
               <div class='col-2 my-3 text-center'>
                 <button
-                  class='btn button custom-btn'
+                  class='btn delete custom-btn'
                   type='button'
                   id='cancel-comment'
                 >Cancel</button>
-              </div>
+              </div> --}}
             </div>
           </form>
         </div>
@@ -54,7 +76,80 @@
 
 </main>
 
-<script src='/js/edit-post.js'></script>
+<script src='/js/edit-post.js'></script> --}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{!--
+{{!-- <header class='text-center'> --}}
+  <div class="container container-fluid mt-5">
+    <h2 class='h2 col-4 m-5 rounded-3 fw-bold header'>Your Dashboard</h1>
+  </div>
+  {{!--
+</header> --}}
+
+<main class='container container-fluid mt-5'>
+  {{!-- <div id='view-post'></div> --}}
+</main> --}}
+{{!-- <form class='form post-form'>
+  <div class='input-group mb-3'>
+    <span class='input-group-text'>Title</span>
+    <input id='title-post' type='text' class='form-control' placeholder='Type your title here' aria-label='Title'
+      value='{{blog.title}}' /> --}}
+    {{!--
+  </div>
+  <div class='input-group'>
+    <div class='input-group'>
+      <span class='input-group-text'>Description</span>
+      <textarea id='description-post' class='form-control' aria-label='With textarea'>{{post.description}}</textarea>
+    </div>
+  </div> --}}
+  {{!-- <div class='row justify-content-center align-items-center'>
+    <div class='form-group col-2 my-3 text-center'>
+      <button class='btn btn-primary custom-btn' type='submit' id='post-update'>Update</button>
+    </div>
+    <div class='form-group col-2 my-3 text-center'>
+      <button class='btn btn-primary custom-btn' type='button' id='post-delete'>Delete</button>
+    </div>
+  </div>
+</form>
+</div>
+</main>
+<script src='/js/editpost.js'></script> --}}
+
+
+
+
 
 {{!-- <header class='constainer text-center'>
   <div class='row bg-info text-white'>

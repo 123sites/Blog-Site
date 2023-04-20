@@ -12,31 +12,31 @@
 // When idle on the site for more than a set time, I'm able to view comments but I am prompted to log in again
 // before I can add, update, or delete comments.
 
-// const commentFormHandler = async function (event) {
-//   event.preventDefault();
+const commentFormHandler = async function (event) {
+  event.preventDefault();
 
-//   const blog_id = document.querySelector(".new-comment-form").dataset.blogid;
+  const blog_id = document.querySelector(".new-comment").dataset.blogid;
 
-//   const comment_description = document
-//     .querySelector("#comment_description")
-//     .value.trim();
-//   console.log(comment_description);
+  const comment_description = document
+    .querySelector("#description")
+    .value.trim();
+  console.log(comment_description);
 
-//   if (comment_description) {
-//     await fetch("/api/comments", {
-//       method: "POST",
-//       body: JSON.stringify({
-//         blog_id,
-//         comment_description,
-//       }),
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//     });
-//     document.location.reload();
-//   }
-// };
+  if (comment_description) {
+    await fetch("/api/comments", {
+      method: "POST",
+      body: JSON.stringify({
+        blog_id,
+        comment_description,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    document.location.reload();
+  }
+};
 
-// document
-//   .querySelector(".new-comment-form")
-//   .addEventListener("submit", commentFormHandler);
+document
+  .querySelector(".new-comment")
+  .addEventListener("submit-comment", commentFormHandler);

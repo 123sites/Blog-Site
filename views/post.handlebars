@@ -1,0 +1,79 @@
+<main class='container container-fluid mt-5'>
+  <div class='card bg-dark bg-info-subtle m-5 rounded-4 border-4'>
+    <header class='card-header'>
+      <div class='row justify-content-between text-start'>
+        <h2 class='h2 col-9 d-block text-start fw-bold'>{{blog.title}}</h2>
+        <div class='align-self-center col-3 text-end m-0'>Posted by:
+          {{blog.user.username}}
+          on
+          {{blog.date_created}}</div>
+      </div>
+    </header>
+    <div>
+      <div class='col-md-12'>
+        <p class='fs-5'>{{blog.description}}</p>
+      </div>
+    </div>
+
+    <div id='add-comment-form'>
+      {{#each blog.comments}}
+      <div class='card bg-info-subtle m-3 rounded-3'>
+        <div class='card-body'>
+          <div class='row align-center'>
+            <div class='col-md-12'>
+              <p id='fs-5'>{{description}}</p>
+            </div>
+          </div>
+        </div>
+        <div class='card-footer'>
+          <div class='row justify-content-between  align-items-center'>
+            <p class='text-muted col-5'>Comment by:
+              {{user.username}}
+              on
+              {{format_date date_created}}</p>
+            <!-- Show delete button if it's the user. -->
+            {{!-- {{#if (isCommentOwner user.id ../user_id)}}
+            <div class='col-2 my-0 text-center'>
+              <button class='btn button custom-btn delete-comment' type='button' data-delete="{{id}}">Delete</button>
+            </div>
+            {{/if}} --}}
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+
+    <!-- If logged-in, can leave comments. -->
+    {{#if loggedIn}}
+    <div class='container m-3' id='add-comment-btn justify'>
+      {{!-- <div class='row d-flex justify-content-center align-items-center'>
+      </div> --}}
+
+      <div id='add-comment'>
+        <div class='card bg-info-subtle m-3 rounded-3'>
+          <div class='card-body'>
+            <div id='view-post'>
+              <form class='form add-comment'>
+                <div class='input-group'>
+                  <div class='input-group'>
+                    <span class='input-group-text fw-bold'>Comment: </span>
+                    <textarea id='description' class='form-control' aria-label='With textarea'
+                      placeholder='Type Here'></textarea>
+                  </div>
+                </div>
+                <div class='row justify-content-center align-items-center'>
+                  <div class='form-group col-2 my-3 text-center'>
+                    <button class='btn button custom-btn' type='submit' id='submit-comment'>Submit</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{/if}}
+  </div>
+</main>
+
+<script src='/js/post.js'></script>
