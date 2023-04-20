@@ -51,24 +51,24 @@ router.get('/:post_id', async (req, res) => {
 //   }
 // });
 
-// router.delete('/:post_id/comment/:comment_id', async (req, res) => {
-//   try {
-//     const commentData = await Comment.destroy({
-//       where: {
-//         id: req.params.comment_id,
-//         user_id: req.session.user_id,
-//       },
-//     });
+router.delete('/:post_id/comment/:comment_id', async (req, res) => {
+  try {
+    const commentData = await Comment.destroy({
+      where: {
+        id: req.params.comment_id,
+        user_id: req.session.user_id,
+      },
+    });
 
-//     if (!commentData) {
-//       res.status(404).json({ message: 'Sorry, but there is no comment with that ID!' });
-//       return;
-//     }
+    if (!commentData) {
+      res.status(404).json({ message: 'Sorry, but there is no comment with that ID!' });
+      return;
+    }
 
-//     res.status(200).json(commentData);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+    res.status(200).json(commentData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;
