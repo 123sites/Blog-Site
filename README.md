@@ -33,6 +33,12 @@ This can be used to put the user's thoughts, opinions and other things that they
 
 When I had trouble with this project, I first tried to problem-solve it myself. I used Google, YouTube, asked my instructor, his TA's, and/or reached out to a tutor.
 
+### Screenshots 🎯
+
+![main-page](./public/images/Blog.png)
+![post-page](./public/images/Blog2.png)
+![comment-page](./public/images/comment-page.png)
+
 ### License 📝
 
 The MIT license is in the GitHub repository.  Click to link to view it:
