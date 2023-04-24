@@ -17,6 +17,7 @@ const { User } = require("../../models");
 
 router.post('/login', async (req, res) => {
   try {
+    console.log(req.body)
     const userData = await User.findOne({ 
 			where: { username: req.body.username }
 		});
@@ -44,7 +45,6 @@ router.post('/login', async (req, res) => {
       req.session.loggedIn = true;
       
       res.json({ user: userData, message: 'You are now logged in!' });
-      res.redirect('/');
     });
 
   } catch (err) {
@@ -54,6 +54,7 @@ router.post('/login', async (req, res) => {
 
 router.post('/signup', async (req, res) => {
   try {
+    console.log(req.body)
     const userData = await User.create(req.body);
     console.log(userData);
     req.session.save(async () => {
