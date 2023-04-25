@@ -1,3 +1,4 @@
+"use strict";
 const signupFormHandler = async (event) => {
   event.preventDefault();
 

@@ -1,3 +1,4 @@
+"use strict";
 // Goes to login template
 const loginFormHandler = async (event) => {
 
