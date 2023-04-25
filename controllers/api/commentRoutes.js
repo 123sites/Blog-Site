@@ -41,7 +41,6 @@ router.get('/:id', (req, res) => {
       })
 });
 
-
 router.post('/', async (req, res) => {
 try {
   const newComment = await Comment.create({
@@ -53,8 +52,6 @@ try {
   res.status(500).json(err);
 }
 });
-
-
 // router.delete('/:id', withAuth, async (req, res) => {
 // try {
 //   const commentData = await Comment.destroy({
@@ -72,7 +69,6 @@ try {
 //   res.status(500).json(err);
 // }
 // });
-
 
 module.exports = router;
 
