@@ -12,10 +12,11 @@ const loginFormHandler = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     });
     console.log(response)
-    const data=await response.json();
+    const data = await response.json();
     console.log(data);
     if (response.ok) {
-      document.location.replace(`/dashboard/${data.user.id}`);
+      document.location.replace('/');
+      // document.location.replace(`/dashboard/${data.user.id}`);
     } else {
       alert('Failed to log in');
     }
