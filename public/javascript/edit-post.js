@@ -8,7 +8,7 @@ const updatePost = async (event) => {
   const description = document.querySelector('#post-description').value.trim();
 
   if (title && description) {
-    const response = await fetch(`/dashboard/${user_id}/edit-post/${post_id}`, {
+    const response = await fetch(`/api/dashboard/6/${user_id}/edit-post/3/${post_id}`, {
       method: 'PUT',
       body: JSON.stringify({ title, description }),
       headers: { 'Content-Type': 'application/json' },
@@ -24,7 +24,7 @@ const updatePost = async (event) => {
 
 const deletePost = async (event) => {
   event.preventDefault();
-  const response = await fetch(`/dashboard/${user_id}/edit-post/${post_id}`, {
+  const response = await fetch(`/api/dashboard/${user_id}/edit-post/3/${post_id}`, {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
   });
